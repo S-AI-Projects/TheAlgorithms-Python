@@ -120,6 +120,18 @@ def are_collinear(a: Point3d, b: Point3d, c: Point3d, accuracy: int = 10) -> boo
     ...               (-3.546599383667157, -4.630005261513976, 3.208784032924246),
     ...               (-2.564606140206386, 3.937845170672183, 7))
     False
+
+    Nearly collinear points: the result depends on ``accuracy``, because the cross
+    product is rounded to that many decimal places before comparing with zero.
+
+    >>> are_collinear((0, 0, 0), (1, 0, 0), (2, 1e-6, 0))
+    False
+    >>> are_collinear((0, 0, 0), (1, 0, 0), (2, 1e-6, 0), accuracy=5)
+    True
+    >>> are_collinear((0, 0, 0), (1, 0, 0), (2, 1e-9, 0), accuracy=8)
+    True
+    >>> are_collinear((0, 0, 0), (1, 0, 0), (2, 1e-9, 0), accuracy=10)
+    False
     """
     ab = create_vector(a, b)
     ac = create_vector(a, c)
