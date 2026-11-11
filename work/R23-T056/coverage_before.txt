@@ -1,0 +1,249 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /Users/paulamibhosle/TheAlgorithms-Python/.venv/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /Users/paulamibhosle/TheAlgorithms-Python
+configfile: pyproject.toml
+plugins: hypothesis-6.170.15, cov-7.1.0
+collecting ... collected 6 items
+
+maths/abs.py::maths.abs.abs_max PASSED                                   [ 16%]
+maths/abs.py::maths.abs.abs_max_sort PASSED                              [ 33%]
+maths/abs.py::maths.abs.abs_min PASSED                                   [ 50%]
+maths/abs.py::maths.abs.abs_val PASSED                                   [ 66%]
+maths/abs.py::maths.abs.test_abs_val PASSED                              [ 83%]
+maths/abs.py::test_abs_val PASSED                                        [100%]/Users/paulamibhosle/TheAlgorithms-Python/.venv/lib/python3.13/site-packages/coverage/report_core.py:116: CoverageWarning: Couldn't parse Python file '/Users/paulamibhosle/TheAlgorithms-Python/maths/greatest_common_divisor.py' (couldnt-parse); see https://coverage.readthedocs.io/en/7.17.2/messages.html#warning-couldnt-parse
+  coverage._warn(msg, slug="couldnt-parse")
+/Users/paulamibhosle/TheAlgorithms-Python/.venv/lib/python3.13/site-packages/coverage/report_core.py:116: CoverageWarning: Couldn't parse Python file '/Users/paulamibhosle/TheAlgorithms-Python/maths/special_numbers/kaprekar_constant.py' (couldnt-parse); see https://coverage.readthedocs.io/en/7.17.2/messages.html#warning-couldnt-parse
+  coverage._warn(msg, slug="couldnt-parse")
+
+
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.13.18-final-0 _______________
+
+Name                                                        Stmts   Miss  Cover   Missing
+-----------------------------------------------------------------------------------------
+maths/addition_without_arithmetic.py                           12     12     0%   9-43
+maths/aliquot_sum.py                                            9      9     0%   1-48
+maths/allocation_number.py                                     16     16     0%   9-50
+maths/arc_length.py                                             5      5     0%   1-17
+maths/area.py                                                 124    124     0%   6-682
+maths/area_under_curve.py                                      22     22     0%   5-61
+maths/autocorrelation.py                                       16     16     0%   10-50
+maths/average_absolute_deviation.py                             8      8     0%   1-29
+maths/average_mean.py                                           8      8     0%   1-28
+maths/average_median.py                                        11     11     0%   1-41
+maths/average_mode.py                                          10     10     0%   1-32
+maths/bailey_borwein_plouffe.py                                19     19     0%   1-89
+maths/base_neg2_conversion.py                                  14     14     0%   1-37
+maths/basic_maths.py                                           61     61     0%   3-122
+maths/bearing.py                                               20     20     0%   10-78
+maths/binary_exponentiation.py                                 52     52     0%   17-190
+maths/binary_multiplication.py                                 19     19     0%   23-101
+maths/binomial_coefficient.py                                  17     17     0%   1-62
+maths/binomial_distribution.py                                 20     20     0%   4-41
+maths/binomial_expansion.py                                    11     11     0%   1-55
+maths/ceil.py                                                   5      5     0%   6-24
+maths/chebyshev_distance.py                                     4      4     0%   1-20
+maths/check_polygon.py                                         11     11     0%   1-47
+maths/chinese_remainder_theorem.py                             28     28     0%   15-96
+maths/cholesky_decomposition.py                                35     35     0%   1-120
+maths/chudnovsky_algorithm.py                                  22     22     0%   1-60
+maths/collatz_sequence.py                                      20     20     0%   15-69
+maths/combinations.py                                          12     12     0%   6-56
+maths/continued_fraction.py                                    17     17     0%   7-57
+maths/convolve_1d.py                                           28     28     0%   1-61
+maths/decimal_isolate.py                                       14     14     0%   7-44
+maths/decimal_to_fraction.py                                   27     27     0%   1-62
+maths/derangement.py                                           13     13     0%   8-42
+maths/digital_root.py                                          10     10     0%   1-46
+maths/disarium.py                                               9      9     0%   1-24
+maths/dodecahedron.py                                          11     11     0%   9-73
+maths/double_factorial.py                                      18     18     0%   1-60
+maths/dual_number_automatic_differentiation.py                 91     91     0%   1-139
+maths/ear_clipping_polygon_triangulation.py                    61     61     0%   8-255
+maths/entropy.py                                               40     40     0%   8-132
+maths/euclidean_distance.py                                    18     18     0%   1-65
+maths/euler_method.py                                          14     14     0%   1-47
+maths/euler_modified.py                                        15     15     0%   1-54
+maths/eulers_totient.py                                        19     19     0%   2-41
+maths/extended_euclidean_algorithm.py                          30     30     0%   15-86
+maths/factorial.py                                             20     20     0%   6-72
+maths/factors.py                                               20     20     0%   1-34
+maths/fast_inverse_sqrt.py                                     14     14     0%   7-54
+maths/fermat_little_theorem.py                                 12     12     0%   8-40
+maths/fibonacci.py                                            107    107     0%   17-341
+maths/find_max.py                                              23     23     0%   1-88
+maths/find_min.py                                              22     22     0%   1-87
+maths/first_fundamental_form.py                                16     16     0%   14-75
+maths/floor.py                                                  5      5     0%   6-22
+maths/gamma.py                                                 28     28     0%   12-116
+maths/gaussian.py                                               6      6     0%   5-62
+maths/gcd_of_n_numbers.py                                      30     30     0%   6-109
+maths/geometric_mean.py                                        19     19     0%   8-55
+maths/germain_primes.py                                        14     14     0%   11-72
+maths/hardy_ramanujanalgo.py                                   22     22     0%   4-42
+maths/integer_square_root.py                                   19     19     0%   16-73
+maths/interquartile_range.py                                   19     19     0%   11-67
+maths/is_int_palindrome.py                                     12     12     0%   1-34
+maths/is_ip_v4_address_valid.py                                17     17     0%   12-75
+maths/is_ipv6_address_valid.py                                 27     27     0%   50-127
+maths/is_square_free.py                                         6      6     0%   7-40
+maths/jaccard_similarity.py                                    19     19     0%   17-98
+maths/joint_probability_distribution.py                        37     37     0%   7-124
+maths/josephus_problem.py                                      18     18     0%   18-130
+maths/juggler_sequence.py                                      18     18     0%   12-63
+maths/karatsuba.py                                             15     15     0%   4-32
+maths/keith_number.py                                          23     23     0%   25-184
+maths/kth_lexicographic_permutation.py                         17     17     0%   1-40
+maths/laplace_transformation.py                                16     16     0%   11-76
+maths/largest_of_very_large_numbers.py                         20     20     0%   3-48
+maths/least_common_multiple.py                                 32     32     0%   1-95
+maths/line_intersection.py                                     23     23     0%   2-156
+maths/line_length.py                                           23     23     0%   1-65
+maths/liouville_lambda.py                                      11     11     0%   11-46
+maths/lucas_lehmer_primality_test.py                           13     13     0%   16-41
+maths/lucas_series.py                                          23     23     0%   6-66
+maths/maclaurin_series.py                                      30     30     0%   5-123
+maths/manhattan_distance.py                                    25     25     0%   1-126
+maths/matrix_exponentiation.py                                 61     61     0%   8-130
+maths/max_sum_sliding_window.py                                16     16     0%   10-46
+maths/minkowski_distance.py                                     9      9     0%   1-45
+maths/mobius_function.py                                       10     10     0%   8-43
+maths/modular_division.py                                      52     52     0%   1-162
+maths/modular_exponential.py                                   18     18     0%   8-45
+maths/monte_carlo.py                                           39     39     0%   5-131
+maths/monte_carlo_dice.py                                      18     18     0%   1-44
+maths/ncr_combinations.py                                      17     17     0%   7-74
+maths/next_prime_number.py                                     28     28     0%   17-80
+maths/number_of_digits.py                                      35     35     0%   1-113
+maths/numerical_analysis/adams_bashforth.py                    88     88     0%   8-231
+maths/numerical_analysis/bisection.py                          25     25     0%   1-55
+maths/numerical_analysis/bisection_2.py                        19     19     0%   11-63
+maths/numerical_analysis/brent_method.py                       39     39     0%   1-121
+maths/numerical_analysis/gauss_seidel_method.py                13     13     0%   1-43
+maths/numerical_analysis/integration_by_simpson_approx.py      20     20     0%   18-121
+maths/numerical_analysis/intersection.py                       17     17     0%   1-54
+maths/numerical_analysis/nevilles_method.py                    12     12     0%   12-55
+maths/numerical_analysis/newton_forward_interpolation.py       32     32     0%   2-57
+maths/numerical_analysis/newton_raphson.py                     28     28     0%   13-114
+maths/numerical_analysis/nth_root.py                           33     33     0%   24-155
+maths/numerical_analysis/numerical_integration.py              23     23     0%   5-66
+maths/numerical_analysis/proper_fractions.py                   10     10     0%   1-40
+maths/numerical_analysis/runge_kutta.py                        17     17     0%   1-44
+maths/numerical_analysis/runge_kutta_fehlberg_45.py            25     25     0%   5-114
+maths/numerical_analysis/runge_kutta_gills.py                  22     22     0%   8-90
+maths/numerical_analysis/secant_method.py                      11     11     0%   6-30
+maths/numerical_analysis/simpson_rule.py                       34     34     0%   12-86
+maths/numerical_analysis/square_root.py                        23     23     0%   1-63
+maths/numerical_analysis/weierstrass_method.py                 23     23     0%   1-97
+maths/odd_sieve.py                                             16     16     0%   1-42
+maths/padovan_sequence.py                                      14     14     0%   1-50
+maths/pell_number.py                                           22     22     0%   1-77
+maths/perfect_cube.py                                          21     21     0%   1-55
+maths/perfect_number.py                                        69     69     0%   17-304
+maths/perfect_square.py                                        17     17     0%   1-73
+maths/persistence.py                                           33     33     0%   1-82
+maths/pi_generator.py                                          37     37     0%   1-87
+maths/pi_monte_carlo_estimation.py                             27     27     0%   1-80
+maths/points_are_collinear_3d.py                               18     18     0%   31-126
+maths/pollard_rho.py                                           36     36     0%   1-147
+maths/polynomial_evaluation.py                                 14     14     0%   1-54
+maths/polynomials/single_indeterminate_operations.py           74     74     0%   10-189
+maths/power_using_recursion.py                                 12     12     0%   16-63
+maths/prime_check.py                                           38     38     0%   3-90
+maths/prime_factors.py                                         27     27     0%   5-93
+maths/prime_numbers.py                                         38     38     0%   1-109
+maths/prime_sieve_eratosthenes.py                              16     16     0%   15-54
+maths/primelib.py                                             182    182     0%   40-841
+maths/print_multiplication_table.py                             4      4     0%   1-26
+maths/pythagoras.py                                            13     13     0%   3-29
+maths/qr_decomposition.py                                      21     21     0%   1-71
+maths/quadratic_equations_complex_numbers.py                   14     14     0%   1-38
+maths/radians.py                                                6      6     0%   1-29
+maths/radix2_fft.py                                            72     72     0%   5-178
+maths/recursive_digit_sum.py                                   12     12     0%   16-58
+maths/remove_digit.py                                          10     10     0%   1-36
+maths/reverse_factorial_recursive.py                           17     17     0%   1-58
+maths/segmented_sieve.py                                       37     37     0%   3-79
+maths/series/alternate_harmonic_series.py                      21     21     0%   1-57
+maths/series/alternating_harmonic_series.py                    11     11     0%   5-34
+maths/series/arithmetic.py                                     24     24     0%   11-77
+maths/series/geometric.py                                      27     27     0%   10-83
+maths/series/geometric_series.py                               22     22     0%   12-74
+maths/series/harmonic.py                                       30     30     0%   10-92
+maths/series/harmonic_series.py                                11     11     0%   15-46
+maths/series/hexagonal_numbers.py                               7      7     0%   18-42
+maths/series/logarithmic_series.py                             20     20     0%   7-54
+maths/series/p_series.py                                       17     17     0%   12-51
+maths/shoelace_area.py                                         20     20     0%   11-70
+maths/sieve_of_atkin.py                                        40     40     0%   15-110
+maths/sieve_of_eratosthenes.py                                 23     23     0%   14-66
+maths/sigmoid.py                                                6      6     0%   11-39
+maths/signum.py                                                18     18     0%   6-58
+maths/simultaneous_linear_equation_solver.py                   88     88     0%   12-142
+maths/sin.py                                                   14     14     0%   14-64
+maths/sock_merchant.py                                          8      8     0%   1-20
+maths/softmax.py                                               27     27     0%   13-139
+maths/solovay_strassen_primality_test.py                       32     32     0%   12-106
+maths/spearman_rank_correlation_coefficient.py                 32     32     0%   1-106
+maths/special_numbers/abundant_numbers.py                      16     16     0%   11-57
+maths/special_numbers/armstrong_numbers.py                     43     43     0%   12-99
+maths/special_numbers/automorphic_number.py                    16     16     0%   14-59
+maths/special_numbers/bell_numbers.py                          21     21     0%   11-81
+maths/special_numbers/carmichael_number.py                     21     21     0%   14-86
+maths/special_numbers/catalan_number.py                        15     15     0%   11-53
+maths/special_numbers/deficient_numbers.py                     18     18     0%   11-60
+maths/special_numbers/disarum_number.py                        12     12     0%   11-53
+maths/special_numbers/evil_number.py                           15     15     0%   11-67
+maths/special_numbers/hamming_numbers.py                       25     25     0%   8-55
+maths/special_numbers/happy_number.py                          12     12     0%   1-48
+maths/special_numbers/harshad_numbers.py                       38     38     0%   8-166
+maths/special_numbers/hexagonal_number.py                      10     10     0%   14-49
+maths/special_numbers/jacobsthal_number.py                     21     21     0%   22-103
+maths/special_numbers/kaprekar_number.py                       19     19     0%   11-56
+maths/special_numbers/krishnamurthy_number.py                  13     13     0%   13-47
+maths/special_numbers/perfect_number.py                        17     17     0%   15-79
+maths/special_numbers/polygonal_numbers.py                      7      7     0%   1-32
+maths/special_numbers/pronic_number.py                         11     11     0%   13-55
+maths/special_numbers/proth_number.py                          55     55     0%   7-126
+maths/special_numbers/spy_number.py                            17     17     0%   11-48
+maths/special_numbers/triangular_numbers.py                     7      7     0%   11-43
+maths/special_numbers/trimorphic_number.py                     10     10     0%   9-53
+maths/special_numbers/ugly_numbers.py                          23     23     0%   12-54
+maths/special_numbers/weird_number.py                          32     32     0%   7-101
+maths/sum_of_arithmetic_series.py                               4      4     0%   2-39
+maths/sum_of_digits.py                                         27     27     0%   1-74
+maths/sum_of_geometric_progression.py                           4      4     0%   1-28
+maths/sum_of_harmonic_series.py                                12     12     0%   1-29
+maths/sumset.py                                                 7      7     0%   11-39
+maths/sylvester_sequence.py                                    13     13     0%   11-44
+maths/tanh.py                                                   6      6     0%   13-43
+maths/test_abs.py                                              72     72     0%   8-145
+maths/test_factorial.py                                        23     23     0%   8-43
+maths/test_prime_check.py                                       2      2     0%   6-8
+maths/three_sum.py                                             22     22     0%   6-47
+maths/tonelli_shanks.py                                        50     50     0%   15-135
+maths/trailing_zeroes.py                                       15     15     0%   6-40
+maths/trapezoidal_rule.py                                      29     29     0%   6-105
+maths/triplet_sum.py                                           40     40     0%   7-90
+maths/twin_prime.py                                            11     11     0%   11-46
+maths/two_pointer.py                                           15     15     0%   21-61
+maths/two_sum.py                                               13     13     0%   15-48
+maths/volume.py                                                99     99     0%   8-594
+maths/weddles_rule.py                                          36     36     0%   1-133
+maths/weighted_average.py                                      13     13     0%   1-44
+maths/zellers_congruence.py                                    46     46     0%   1-164
+maths/abs.py                                                   35      4    89%   89-94
+maths/__init__.py                                               0      0   100%
+maths/images/__init__.py                                        0      0   100%
+maths/numerical_analysis/__init__.py                            0      0   100%
+maths/polynomials/__init__.py                                   0      0   100%
+maths/series/__init__.py                                        0      0   100%
+maths/special_numbers/__init__.py                               0      0   100%
+-----------------------------------------------------------------------------------------
+TOTAL                                                        5187   5156     1%
+============================= slowest 10 durations =============================
+
+(10 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================== 6 passed in 0.45s ===============================
