@@ -24,6 +24,31 @@ def extended_euclid(a: int, b: int) -> tuple[int, int]:
     >>> extended_euclid(7, 5)
     (-2, 3)
 
+    The recursion goes (10, 6) -> (6, 4) -> (4, 2) -> (2, 0) and then unwinds, so the
+    intermediate results of extended_euclid(10, 6) are:
+
+    >>> extended_euclid(2, 0)  # base case
+    (1, 0)
+    >>> extended_euclid(4, 2)
+    (0, 1)
+    >>> extended_euclid(6, 4)
+    (1, -1)
+
+    The result (x, y) satisfies a * x + b * y == gcd(a, b). Here gcd(10, 6) is 2, not 1,
+    because 10 and 6 are not coprime:
+
+    >>> x, y = extended_euclid(10, 6)
+    >>> 10 * x + 6 * y
+    2
+
+    When a < b the first step only swaps the arguments (a // b is 0):
+
+    >>> extended_euclid(5, 7)
+    (3, -2)
+    >>> x, y = extended_euclid(5, 7)
+    >>> 5 * x + 7 * y
+    1
+
     """
     if b == 0:
         return (1, 0)
@@ -44,6 +69,22 @@ def chinese_remainder_theorem(n1: int, r1: int, n2: int, r2: int) -> int:
 
     >>> chinese_remainder_theorem(6,1,4,3)
     14
+
+    The result satisfies both congruences when the moduli are coprime:
+
+    >>> n = chinese_remainder_theorem(5, 1, 7, 3)
+    >>> n % 5, n % 7
+    (1, 3)
+
+    Non-coprime moduli are NOT supported. 6 and 4 share the factor 2, so
+    extended_euclid(6, 4) gives a * x + b * y == 2, not 1, and the formula returns
+    14, which satisfies neither congruence (a valid answer, 7, exists modulo 12):
+
+    >>> n = chinese_remainder_theorem(6, 1, 4, 3)
+    >>> n % 6, n % 4
+    (2, 2)
+    >>> 7 % 6, 7 % 4
+    (1, 3)
 
     """
     (x, y) = extended_euclid(n1, n2)
