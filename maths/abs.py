@@ -11,6 +11,10 @@ def abs_val(num: float) -> float:
     True
     >>> abs_val(0)
     0
+    >>> abs_val(34)
+    34
+    >>> abs_val(-100000000000)
+    100000000000
     """
     return -num if num < 0 else num
 
@@ -21,6 +25,8 @@ def abs_min(x: list[int]) -> int:
     0
     >>> abs_min([3,-10,-2])
     -2
+    >>> abs_min([-3, -1, 2, -11])
+    -1
     >>> abs_min([])
     Traceback (most recent call last):
         ...
@@ -41,6 +47,8 @@ def abs_max(x: list[int]) -> int:
     11
     >>> abs_max([3,-10,-2])
     -10
+    >>> abs_max([-3, -1, 2, -11])
+    -11
     >>> abs_max([])
     Traceback (most recent call last):
         ...
@@ -61,6 +69,8 @@ def abs_max_sort(x: list[int]) -> int:
     11
     >>> abs_max_sort([3,-10,-2])
     -10
+    >>> abs_max_sort([-3, -1, 2, -11])
+    -11
     >>> abs_max_sort([])
     Traceback (most recent call last):
         ...
@@ -71,24 +81,8 @@ def abs_max_sort(x: list[int]) -> int:
     return sorted(x, key=abs)[-1]
 
 
-def test_abs_val() -> None:
-    """
-    >>> test_abs_val()
-    """
-    assert abs_val(0) == 0
-    assert abs_val(34) == 34
-    assert abs_val(-100000000000) == 100000000000
-
-    a = [-3, -1, 2, -11]
-    assert abs_max(a) == -11
-    assert abs_max_sort(a) == -11
-    assert abs_min(a) == -1
-
-
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     import doctest
 
     doctest.testmod()
-
-    test_abs_val()
     print(abs_val(-34))  # --> 34
