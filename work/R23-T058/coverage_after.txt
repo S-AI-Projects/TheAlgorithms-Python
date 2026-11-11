@@ -1,0 +1,53 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /Users/paulamibhosle/TheAlgorithms-Python/.venv/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /Users/paulamibhosle/TheAlgorithms-Python
+configfile: pyproject.toml
+plugins: hypothesis-6.170.15, cov-7.1.0
+collecting ... collected 8 items
+
+electronics/resistor_color_code.py::electronics.resistor_color_code.calculate_resistance PASSED [ 12%]
+electronics/resistor_color_code.py::electronics.resistor_color_code.check_validity PASSED [ 25%]
+electronics/resistor_color_code.py::electronics.resistor_color_code.get_band_type_count PASSED [ 37%]
+electronics/resistor_color_code.py::electronics.resistor_color_code.get_color_value PASSED [ 50%]
+electronics/resistor_color_code.py::electronics.resistor_color_code.get_multiplier PASSED [ 62%]
+electronics/resistor_color_code.py::electronics.resistor_color_code.get_significant_digits PASSED [ 75%]
+electronics/resistor_color_code.py::electronics.resistor_color_code.get_temperature_coeffecient PASSED [ 87%]
+electronics/resistor_color_code.py::electronics.resistor_color_code.get_tolerance PASSED [100%]
+
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.13.18-final-0 _______________
+
+Name                                     Stmts   Miss  Cover   Missing
+----------------------------------------------------------------------
+electronics/apparent_power.py               11     11     0%   1-37
+electronics/builtin_voltage.py              18     18     0%   1-66
+electronics/capacitor_equivalence.py        20     20     0%   3-53
+electronics/carrier_concentration.py        20     20     0%   5-75
+electronics/charging_capacitor.py           12     12     0%   18-72
+electronics/charging_inductor.py            12     12     0%   29-97
+electronics/circular_convolution.py         26     26     0%   15-98
+electronics/coulombs_law.py                 24     24     0%   3-85
+electronics/electric_conductivity.py        19     19     0%   1-73
+electronics/electric_power.py               20     20     0%   2-59
+electronics/electrical_impedance.py         15     15     0%   7-46
+electronics/full_wave_rectifier.py          27     27     0%   1-130
+electronics/half_wave_rectifier.py          27     27     0%   1-130
+electronics/ic_555_timer.py                 13     13     0%   1-75
+electronics/ind_reactance.py                21     21     0%   2-69
+electronics/ohms_law.py                     16     16     0%   2-42
+electronics/power_factor_correction.py      23     23     0%   4-125
+electronics/real_and_reactive_power.py      12     12     0%   1-49
+electronics/resistor_equivalence.py         20     20     0%   3-56
+electronics/resonant_frequency.py           11     11     0%   11-49
+electronics/star_delta_conversions.py       25     25     0%   5-103
+electronics/wheatstone_bridge.py             8      8     0%   2-72
+electronics/resistor_color_code.py          54      3    94%   347, 374-376
+electronics/__init__.py                      0      0   100%
+----------------------------------------------------------------------
+TOTAL                                      454    403    11%
+============================= slowest 10 durations =============================
+
+(10 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================== 8 passed in 0.14s ===============================

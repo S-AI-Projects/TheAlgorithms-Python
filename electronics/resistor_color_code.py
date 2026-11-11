@@ -135,6 +135,27 @@ band_types: dict[int, dict[str, int]] = {
 }
 
 
+def get_color_value[T](color: str, color_values: dict[str, T], band_name: str) -> T:
+    """
+    Function returns the value stored for the color in color_values. It raises a
+    ValueError naming the band if the color is not allowed for that band. The
+    get_* functions below share this lookup and validation.
+
+    >>> get_color_value('Red', {'Red': 2}, 'example band')
+    2
+
+    >>> get_color_value('Aqua', {'Red': 2}, 'example band')
+    Traceback (most recent call last):
+      ...
+    ValueError: Aqua is not a valid color for example band
+
+    """
+    if color not in color_values:
+        msg = f"{color} is not a valid color for {band_name}"
+        raise ValueError(msg)
+    return color_values[color]
+
+
 def get_significant_digits(colors: list) -> str:
     """
     Function returns the digit associated with the color. Function takes a
@@ -149,13 +170,14 @@ def get_significant_digits(colors: list) -> str:
     ValueError: Aqua is not a valid color for significant figure bands
 
     """
-    digit = ""
-    for color in colors:
-        if color not in significant_figures_color_values:
-            msg = f"{color} is not a valid color for significant figure bands"
-            raise ValueError(msg)
-        digit = digit + str(significant_figures_color_values[color])
-    return str(digit)
+    return "".join(
+        str(
+            get_color_value(
+                color, significant_figures_color_values, "significant figure bands"
+            )
+        )
+        for color in colors
+    )
 
 
 def get_multiplier(color: str) -> float:
@@ -172,10 +194,7 @@ def get_multiplier(color: str) -> float:
     ValueError: Ivory is not a valid color for multiplier band
 
     """
-    if color not in multiplier_color_values:
-        msg = f"{color} is not a valid color for multiplier band"
-        raise ValueError(msg)
-    return multiplier_color_values[color]
+    return get_color_value(color, multiplier_color_values, "multiplier band")
 
 
 def get_tolerance(color: str) -> float:
@@ -192,10 +211,7 @@ def get_tolerance(color: str) -> float:
     ValueError: Indigo is not a valid color for tolerance band
 
     """
-    if color not in tolerance_color_values:
-        msg = f"{color} is not a valid color for tolerance band"
-        raise ValueError(msg)
-    return tolerance_color_values[color]
+    return get_color_value(color, tolerance_color_values, "tolerance band")
 
 
 def get_temperature_coeffecient(color: str) -> int:
@@ -212,10 +228,9 @@ def get_temperature_coeffecient(color: str) -> int:
     ValueError: Cyan is not a valid color for temperature coeffecient band
 
     """
-    if color not in temperature_coeffecient_color_values:
-        msg = f"{color} is not a valid color for temperature coeffecient band"
-        raise ValueError(msg)
-    return temperature_coeffecient_color_values[color]
+    return get_color_value(
+        color, temperature_coeffecient_color_values, "temperature coeffecient band"
+    )
 
 
 def get_band_type_count(total_number_of_bands: int, type_of_band: str) -> int:
@@ -277,19 +292,16 @@ def check_validity(number_of_bands: int, colors: list) -> bool:
     ValueError: Cyan is not a valid color
 
     """
-    if number_of_bands >= 3 and number_of_bands <= 6:
-        if number_of_bands == len(colors):
-            for color in colors:
-                if color not in valid_colors:
-                    msg = f"{color} is not a valid color"
-                    raise ValueError(msg)
-            return True
-        else:
-            msg = f"Expecting {number_of_bands} colors, provided {len(colors)} colors"
-            raise ValueError(msg)
-    else:
-        msg = "Invalid number of bands. Resistor bands must be 3 to 6"
+    if not 3 <= number_of_bands <= 6:
+        raise ValueError("Invalid number of bands. Resistor bands must be 3 to 6")
+    if number_of_bands != len(colors):
+        msg = f"Expecting {number_of_bands} colors, provided {len(colors)} colors"
         raise ValueError(msg)
+    for color in colors:
+        if color not in valid_colors:
+            msg = f"{color} is not a valid color"
+            raise ValueError(msg)
+    return True
 
 
 def calculate_resistance(number_of_bands: int, color_code_list: list) -> dict:
@@ -331,41 +343,31 @@ def calculate_resistance(number_of_bands: int, color_code_list: list) -> dict:
     ValueError: Lime is not a valid color
 
     """
-    is_valid = check_validity(number_of_bands, color_code_list)
-    if is_valid:
-        number_of_significant_bands = get_band_type_count(
-            number_of_bands, "significant"
-        )
-        significant_colors = color_code_list[:number_of_significant_bands]
-        significant_digits = int(get_significant_digits(significant_colors))
-        multiplier_color = color_code_list[number_of_significant_bands]
-        multiplier = get_multiplier(multiplier_color)
-        if number_of_bands == 3:
-            tolerance_color = None
-        else:
-            tolerance_color = color_code_list[number_of_significant_bands + 1]
-        tolerance = (
-            20 if tolerance_color is None else get_tolerance(str(tolerance_color))
-        )
-        if number_of_bands != 6:
-            temperature_coeffecient_color = None
-        else:
-            temperature_coeffecient_color = color_code_list[
-                number_of_significant_bands + 2
-            ]
-        temperature_coeffecient = (
-            0
-            if temperature_coeffecient_color is None
-            else get_temperature_coeffecient(str(temperature_coeffecient_color))
-        )
-        resisitance = significant_digits * multiplier
-        if temperature_coeffecient == 0:
-            answer = f"{resisitance}Ω ±{tolerance}% "
-        else:
-            answer = f"{resisitance}Ω ±{tolerance}% {temperature_coeffecient} ppm/K"
-        return {"resistance": answer}
-    else:
+    if not check_validity(number_of_bands, color_code_list):
         raise ValueError("Input is invalid")
+    number_of_significant_bands = get_band_type_count(number_of_bands, "significant")
+    significant_digits = int(
+        get_significant_digits(color_code_list[:number_of_significant_bands])
+    )
+    multiplier = get_multiplier(color_code_list[number_of_significant_bands])
+    # 3 band resistors have no tolerance band (default 20%); only 6 band resistors
+    # have a temperature coeffecient band (0 means "not present")
+    tolerance = (
+        get_tolerance(color_code_list[number_of_significant_bands + 1])
+        if number_of_bands >= 4
+        else 20
+    )
+    temperature_coeffecient = (
+        get_temperature_coeffecient(color_code_list[number_of_significant_bands + 2])
+        if number_of_bands == 6
+        else 0
+    )
+    resistance = significant_digits * multiplier
+    if temperature_coeffecient == 0:
+        answer = f"{resistance}Ω ±{tolerance}% "
+    else:
+        answer = f"{resistance}Ω ±{tolerance}% {temperature_coeffecient} ppm/K"
+    return {"resistance": answer}
 
 
 if __name__ == "__main__":
