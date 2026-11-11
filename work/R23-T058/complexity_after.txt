@@ -1,0 +1,9 @@
+electronics/resistor_color_code.py:138:5: C901 `get_color_value` is too complex (2 > 0)
+electronics/resistor_color_code.py:159:5: C901 `get_significant_digits` is too complex (1 > 0)
+electronics/resistor_color_code.py:183:5: C901 `get_multiplier` is too complex (1 > 0)
+electronics/resistor_color_code.py:200:5: C901 `get_tolerance` is too complex (1 > 0)
+electronics/resistor_color_code.py:217:5: C901 `get_temperature_coeffecient` is too complex (1 > 0)
+electronics/resistor_color_code.py:236:5: C901 `get_band_type_count` is too complex (3 > 0)
+electronics/resistor_color_code.py:275:5: C901 `check_validity` is too complex (5 > 0)
+electronics/resistor_color_code.py:307:5: C901 `calculate_resistance` is too complex (3 > 0)
+Found 8 errors.
