@@ -1,3 +1,13 @@
+"""
+Dilation, a morphological operation on binary images.
+
+Dilation grows the white (True) regions of a binary image: a pixel becomes True if
+the structuring element, placed over it, overlaps at least one True pixel. The
+functions here convert an RGB image to gray, threshold it to binary, and dilate it.
+
+Reference: https://en.wikipedia.org/wiki/Dilation_(morphology)
+"""
+
 from pathlib import Path
 
 import numpy as np
@@ -6,7 +16,8 @@ from PIL import Image
 
 def rgb_to_gray(rgb: np.ndarray) -> np.ndarray:
     """
-    Return gray image from rgb image
+    Return gray image from rgb image.
+
     >>> rgb_to_gray(np.array([[[127, 255, 0]]]))
     array([[187.6453]])
     >>> rgb_to_gray(np.array([[[0, 0, 0]]]))
@@ -22,7 +33,8 @@ def rgb_to_gray(rgb: np.ndarray) -> np.ndarray:
 
 def gray_to_binary(gray: np.ndarray) -> np.ndarray:
     """
-    Return binary image from gray image
+    Return binary image from gray image.
+
     >>> gray_to_binary(np.array([[127, 255, 0]]))
     array([[False,  True, False]])
     >>> gray_to_binary(np.array([[0]]))
@@ -39,7 +51,8 @@ def gray_to_binary(gray: np.ndarray) -> np.ndarray:
 
 def dilation(image: np.ndarray, kernel: np.ndarray) -> np.ndarray:
     """
-    Return dilated image
+    Return dilated image.
+
     >>> dilation(np.array([[True, False, True]]), np.array([[0, 1, 0]]))
     array([[False, False, False]])
     >>> dilation(np.array([[False, False, True]]), np.array([[1, 0, 1]]))
