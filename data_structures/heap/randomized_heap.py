@@ -1,5 +1,31 @@
 #!/usr/bin/env python3
 
+"""
+Randomized meldable heap.
+
+A randomized heap is a binary min-heap (every node is <= its children) whose only
+real operation is ``merge``: ``insert`` merges the heap with a one-node heap and
+``pop`` merges the two children of the root. ``merge`` keeps the smaller root, flips
+a fair coin to decide which of its two children to swap, and then merges the other
+child with the second heap. The coin flip keeps the merge path short without
+storing any balance information, so every operation takes O(log n) expected time.
+
+Reference: https://en.wikipedia.org/wiki/Randomized_meldable_heap
+
+Popping every value from a heap built from 1,000 random (seeded) values returns them
+in sorted order:
+
+>>> import random
+>>> random.seed(0)
+>>> values = [random.randint(-1000, 1000) for _ in range(1000)]
+>>> heap = RandomizedHeap(values)
+>>> popped = [heap.pop() for _ in range(len(values))]
+>>> popped == sorted(values)
+True
+>>> bool(heap)
+False
+"""
+
 from __future__ import annotations
 
 import random

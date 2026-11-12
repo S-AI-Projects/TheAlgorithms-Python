@@ -1,0 +1,16 @@
+A) pop order of heaps built from 1,000 random values
+   200/200 seeds: popped list == sorted(values) and heap empty
+   seed 0 (the doctest): sorted=True, first 5=[-1000, -1000, -998, -997, -996], last 5=[991, 995, 995, 995, 999]
+
+B) average recursive merge() calls per operation (n = number of values)
+| n | log2(n) | insert order | coin flip: insert | coin flip: pop | never swap: insert | never swap: pop |
+|---|---|---|---|---|---|---|
+| 1000 | 10.0 | random | 7.0 | 10.1 | 250.1 | 1.0 |
+| 1000 | 10.0 | ascending | 9.3 | 10.1 | 500.5 | 1.0 |
+| 1000 | 10.0 | descending | 2.0 | 1.0 | 2.0 | 1.0 |
+| 2000 | 11.0 | random | 7.8 | 11.3 | 499.8 | 1.0 |
+| 2000 | 11.0 | ascending | 10.3 | 11.6 | 1000.5 | 1.0 |
+| 2000 | 11.0 | descending | 2.0 | 1.0 | 2.0 | 1.0 |
+| 4000 | 12.0 | random | 8.4 | 12.8 | 992.4 | 1.0 |
+| 4000 | 12.0 | ascending | 11.3 | 13.0 | 2000.5 | 1.0 |
+| 4000 | 12.0 | descending | 2.0 | 1.0 | 2.0 | 1.0 |
