@@ -1,0 +1,32 @@
+$ uv run --python 3.15 pytest -v data_structures/linked_list/skip_list.py
+============================= test session starts ==============================
+platform darwin -- Python 3.15.2, pytest-9.1.1, pluggy-1.6.0 -- /Users/md.sohail/Documents/snai/TheAlgorithms-Python/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/md.sohail/Documents/snai/TheAlgorithms-Python
+configfile: pyproject.toml
+plugins: cov-7.1.0, anyio-4.15.1
+collecting ... collected 16 items
+
+data_structures/linked_list/skip_list.py::data_structures.linked_list.skip_list.Node.__repr__ PASSED [  6%]
+data_structures/linked_list/skip_list.py::data_structures.linked_list.skip_list.Node.level PASSED [ 12%]
+data_structures/linked_list/skip_list.py::data_structures.linked_list.skip_list.SkipList.__str__ PASSED [ 18%]
+data_structures/linked_list/skip_list.py::data_structures.linked_list.skip_list.SkipList.delete PASSED [ 25%]
+data_structures/linked_list/skip_list.py::data_structures.linked_list.skip_list.SkipList.find PASSED [ 31%]
+data_structures/linked_list/skip_list.py::data_structures.linked_list.skip_list.SkipList.insert PASSED [ 37%]
+data_structures/linked_list/skip_list.py::data_structures.linked_list.skip_list.main PASSED [ 43%]
+data_structures/linked_list/skip_list.py::test_insert PASSED             [ 50%]
+data_structures/linked_list/skip_list.py::test_insert_overrides_existing_value PASSED [ 56%]
+data_structures/linked_list/skip_list.py::test_searching_empty_list_returns_none PASSED [ 62%]
+data_structures/linked_list/skip_list.py::test_search PASSED             [ 68%]
+data_structures/linked_list/skip_list.py::test_deleting_item_from_empty_list_do_nothing PASSED [ 75%]
+data_structures/linked_list/skip_list.py::test_deleted_items_are_not_founded_by_find_method PASSED [ 81%]
+data_structures/linked_list/skip_list.py::test_delete_removes_only_given_key PASSED [ 87%]
+data_structures/linked_list/skip_list.py::test_delete_doesnt_leave_dead_nodes PASSED [ 93%]
+data_structures/linked_list/skip_list.py::test_iter_always_yields_sorted_values PASSED [100%]
+
+============================== 16 passed in 0.06s ==============================
+
+$ uv run --python 3.15 python -m doctest -v data_structures/linked_list/skip_list.py
+36 tests in 25 items.
+36 passed.
+Test passed.

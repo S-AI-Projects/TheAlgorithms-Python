@@ -1,0 +1,41 @@
+$ uv run --python 3.15 --with ty ty check data_structures/linked_list/skip_list.py
+warning[renamed-rule]: Rule `unresolved-attribute` has been renamed to `missing-attribute`
+   --> pyproject.toml:326:7
+    |
+326 | rules.unresolved-attribute = "ignore"
+    |       ^^^^^^^^^^^^^^^^^^^^
+
+warning[renamed-rule]: Rule `unresolved-import` has been renamed to `import-not-found`
+   --> pyproject.toml:327:7
+    |
+327 | rules.unresolved-import = "ignore"
+    |       ^^^^^^^^^^^^^^^^^
+
+Found 2 diagnostics
+
+Note on baseline state:
+1. When `def __iter__(self) -> Iterator[KT]:` was first added without `cast`, `ty check` produced:
+error[invalid-yield]: Yield expression type does not match annotation
+   --> data_structures/linked_list/skip_list.py:114:19
+    |
+114 |             yield node.forward[0].key
+    |                   ^^^^^^^^^^^^^^^^^^^ expression of type `KT@SkipList | str`, expected `KT@SkipList`
+    |
+   ::: data_structures/linked_list/skip_list.py:110:27
+    |
+110 |     def __iter__(self) -> Iterator[KT]:
+    |                           ------------ Function annotated with yield type `KT@SkipList` here
+info: element `str` of union `KT@SkipList | str` is not assignable to `KT@SkipList`
+
+2. When `_locate_node` was hinted with `(self, key: KT)` and `rules.invalid-argument-type = "error"` was enabled:
+error[invalid-argument-type]: Argument to bound method `SkipList._locate_node` is incorrect
+   --> data_structures/linked_list/skip_list.py:242:37
+    |
+242 |         node, _ = self._locate_node(key)
+    |                                     ^^^ Expected `KT@SkipList`, found `VT@SkipList`
+info: Method defined here
+   --> data_structures/linked_list/skip_list.py:129:9
+    |
+129 |     def _locate_node(self, key: KT) -> tuple[Node[KT, VT] | None, list[Node[KT, VT]]]:
+    |         ^^^^^^^^^^^^       ------- Parameter declared here
+This exposed the bug where `find(self, key: VT)` used value type `VT` instead of key type `KT`.

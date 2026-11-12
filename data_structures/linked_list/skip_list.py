@@ -5,9 +5,10 @@ https://epaperpress.com/sortsearch/download/skiplist.pdf
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from itertools import pairwise
 from random import random
-from typing import TypeVar
+from typing import TypeVar, cast
 
 KT = TypeVar("KT")
 VT = TypeVar("VT")
@@ -106,11 +107,11 @@ class SkipList[KT, VT]:
         lines.append("None".ljust(label_size) + "* " * len(forwards))
         return f"SkipList(level={self.level})\n" + "\n".join(lines)
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[KT]:
         node = self.head
 
         while len(node.forward) != 0:
-            yield node.forward[0].key
+            yield cast(KT, node.forward[0].key)
             node = node.forward[0]
 
     def random_level(self) -> int:
@@ -125,7 +126,7 @@ class SkipList[KT, VT]:
 
         return level
 
-    def _locate_node(self, key) -> tuple[Node[KT, VT] | None, list[Node[KT, VT]]]:
+    def _locate_node(self, key: KT) -> tuple[Node[KT, VT] | None, list[Node[KT, VT]]]:
         """
         :param key: Searched key,
         :return: Tuple with searched node (or None if given key is not present)
@@ -223,7 +224,7 @@ class SkipList[KT, VT]:
                 else:
                     update_node.forward[i] = new_node
 
-    def find(self, key: VT) -> VT | None:
+    def find(self, key: KT) -> VT | None:
         """
         :param key: Search key.
         :return: Value associated with given key or None if given key is not present.
@@ -236,6 +237,12 @@ class SkipList[KT, VT]:
         >>> skip_list.insert(2, "Three")
         >>> skip_list.find(2)
         'Three'
+        >>> str_skip_list: SkipList[str, int] = SkipList()
+        >>> str_skip_list.insert("Key", 100)
+        >>> str_skip_list.find("Key")
+        100
+        >>> str_skip_list.find("Missing") is None
+        True
         """
 
         node, _ = self._locate_node(key)
@@ -380,7 +387,7 @@ def test_delete_doesnt_leave_dead_nodes() -> None:
 
     skip_list.delete("X")
 
-    def traverse_keys(node):
+    def traverse_keys(node: Node[str, int]) -> Iterator[str]:
         yield node.key
         for forward_node in node.forward:
             yield from traverse_keys(forward_node)
@@ -389,7 +396,7 @@ def test_delete_doesnt_leave_dead_nodes() -> None:
 
 
 def test_iter_always_yields_sorted_values() -> None:
-    def is_sorted(lst):
+    def is_sorted(lst: list[int]) -> bool:
         return all(next_item >= item for item, next_item in pairwise(lst))
 
     skip_list = SkipList()
