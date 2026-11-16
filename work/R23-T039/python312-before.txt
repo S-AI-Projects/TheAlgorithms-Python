@@ -1,0 +1,13 @@
+Baseline command:
+
+```text
+uv run --no-project --python 3.12 --with numpy --with opencv-python-headless --with pytest --with pytest-cov pytest digital_image_processing/dithering/burkes.py --cov=digital_image_processing/dithering --cov-report=term-missing -v
+```
+
+Before adding the `process` and constructor doctests, the command collected one
+pytest item (the three `get_greyscale` doctests) and passed:
+
+```text
+1 passed
+digital_image_processing/dithering/burkes.py    43    33    23%    20-37, 57-78, 83-98
+```

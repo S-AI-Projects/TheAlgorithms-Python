@@ -1,0 +1,13 @@
+Requested invocation:
+
+```text
+uv run --python 3.12 --with numpy --with opencv-python-headless --with pytest --with pytest-cov pytest digital_image_processing/dithering/burkes.py --cov=digital_image_processing/dithering --cov-report=term-missing -v
+```
+
+It did not reach pytest because the project requires Python >=3.15:
+
+```text
+The requested interpreter resolved to Python 3.12.16, which is incompatible with the project's Python requirement: `>=3.15`
+```
+
+The same test was run successfully with `--no-project` added to `uv run`.

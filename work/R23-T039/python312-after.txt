@@ -1,0 +1,25 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.16, pytest-9.2.0, pluggy-1.7.0 -- /Users/rajpatil/.cache/uv/builds-v0/.tmpAv6BNq/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/rajpatil/SnAiProject/TheAlgorithms-Python
+configfile: pyproject.toml
+plugins: cov-7.1.0
+collecting ... collected 3 items
+
+digital_image_processing/dithering/burkes.py::digital_image_processing.dithering.burkes.Burkes.__init__ PASSED [ 33%]
+digital_image_processing/dithering/burkes.py::digital_image_processing.dithering.burkes.Burkes.get_greyscale PASSED [ 66%]
+digital_image_processing/dithering/burkes.py::digital_image_processing.dithering.burkes.Burkes.process PASSED [100%]
+
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.12.16-final-0 _______________
+
+Name                                             Stmts   Miss  Cover   Missing
+------------------------------------------------------------------------------
+digital_image_processing/dithering/burkes.py        43      7    84%   106-121
+digital_image_processing/dithering/__init__.py       0      0   100%
+------------------------------------------------------------------------------
+TOTAL                                               43      7    84%
+============================= slowest 10 durations =============================
+
+(9 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================== 3 passed in 0.25s ===============================

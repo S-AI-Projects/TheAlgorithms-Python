@@ -16,7 +16,16 @@ class Burkes:
         * This implementation get RGB image and converts it to greyscale in runtime.
     """
 
-    def __init__(self, input_img, threshold: int) -> None:
+    def __init__(self, input_img: np.ndarray, threshold: int) -> None:
+        """
+        Initialize the ditherer with an RGB image and threshold.
+
+        A threshold at the maximum grayscale value is invalid:
+        >>> Burkes(np.zeros((1, 1, 3), dtype=np.uint8), threshold=255)
+        Traceback (most recent call last):
+        ...
+        ValueError: Factor value should be from 0 to 255
+        """
         self.min_threshold = 0
         # max greyscale value for #FFFFFF
         self.max_threshold = int(self.get_greyscale(255, 255, 255))
@@ -54,6 +63,20 @@ class Burkes:
         return 0.114 * blue + 0.587 * green + 0.299 * red
 
     def process(self) -> None:
+        """
+        Apply Burkes error diffusion to the input image.
+
+        The tiny in-memory image exercises processing without an image file:
+        >>> tiny_image = np.array(
+        ...     [[[100, 100, 100], [150, 150, 150]],
+        ...      [[130, 130, 130], [120, 120, 120]]],
+        ...     dtype=np.uint8,
+        ... )
+        >>> burkes = Burkes(tiny_image, threshold=128)
+        >>> burkes.process()
+        >>> burkes.output_img.tolist()
+        [[[0, 0, 0], [255, 255, 255]], [[255, 255, 255], [0, 0, 0]]]
+        """
         for y in range(self.height):
             for x in range(self.width):
                 greyscale = int(self.get_greyscale(*self.input_img[y][x]))
