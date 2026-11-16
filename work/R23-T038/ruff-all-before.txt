@@ -1,0 +1,535 @@
+warning: `incorrect-blank-line-before-class` (D203) and `blank-line-before-class` (D211) are incompatible. Ignoring `incorrect-blank-line-before-class`.
+warning: `multi-line-summary-first-line` (D212) and `multi-line-summary-second-line` (D213) are incompatible. Ignoring `multi-line-summary-second-line`.
+D205 1 blank line required between summary line and description
+ --> geometry/braik_mac_construction.py:1:1
+  |
+1 | / """
+2 | | braikenridge_maclaurin_construction
+3 | | https://mathworld.wolfram.com/ConicSection.html
+4 | | 5 Points define a conic section on a 2D normal orthogonal plane using this technique.
+5 | | """
+  | |___^
+6 |
+7 |   from __future__ import annotations
+  |
+help: Insert single blank line
+
+D212 [*] Multi-line docstring summary should start at the first line
+ --> geometry/braik_mac_construction.py:1:1
+  |
+1 | / """
+2 | | braikenridge_maclaurin_construction
+3 | | https://mathworld.wolfram.com/ConicSection.html
+4 | | 5 Points define a conic section on a 2D normal orthogonal plane using this technique.
+5 | | """
+  | |___^
+6 |
+7 |   from __future__ import annotations
+  |
+help: Remove whitespace after opening quotes
+  |
+  - """
+  - braikenridge_maclaurin_construction
+1 + """braikenridge_maclaurin_construction
+2 | https://mathworld.wolfram.com/ConicSection.html
+  |
+
+CPY001 Missing copyright notice at top of file
+--> geometry/braik_mac_construction.py:1:1
+
+D205 1 blank line required between summary line and description
+  --> geometry/braik_mac_construction.py:16:5
+   |
+14 |   @dataclass
+15 |   class Point:
+16 | /     """
+17 | |     A point defined by 2 floats representing a length on a normalized
+18 | |     orthogonal coordinate system
+19 | |     default coordinate is the origin
+20 | |
+21 | |     >>> Point(-1.0, 0.0)
+22 | |     Point(x=-1.0, y=0.0)
+23 | |     """
+   | |_______^
+24 |
+25 |       x: float = 0.0
+   |
+help: Insert single blank line
+
+D212 [*] Multi-line docstring summary should start at the first line
+  --> geometry/braik_mac_construction.py:16:5
+   |
+14 |   @dataclass
+15 |   class Point:
+16 | /     """
+17 | |     A point defined by 2 floats representing a length on a normalized
+18 | |     orthogonal coordinate system
+19 | |     default coordinate is the origin
+20 | |
+21 | |     >>> Point(-1.0, 0.0)
+22 | |     Point(x=-1.0, y=0.0)
+23 | |     """
+   | |_______^
+24 |
+25 |       x: float = 0.0
+   |
+help: Remove whitespace after opening quotes
+   |
+15 | class Point:
+   -     """
+   -     A point defined by 2 floats representing a length on a normalized
+16 +     """A point defined by 2 floats representing a length on a normalized
+17 |     orthogonal coordinate system
+   |
+
+D400 First line should end with a period
+  --> geometry/braik_mac_construction.py:16:5
+   |
+14 |   @dataclass
+15 |   class Point:
+16 | /     """
+17 | |     A point defined by 2 floats representing a length on a normalized
+18 | |     orthogonal coordinate system
+19 | |     default coordinate is the origin
+20 | |
+21 | |     >>> Point(-1.0, 0.0)
+22 | |     Point(x=-1.0, y=0.0)
+23 | |     """
+   | |_______^
+24 |
+25 |       x: float = 0.0
+   |
+help: Add period
+   |
+18 |     orthogonal coordinate system
+   -     default coordinate is the origin
+19 +     default coordinate is the origin.
+20 |
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+D415 First line should end with a period, question mark, or exclamation point
+  --> geometry/braik_mac_construction.py:16:5
+   |
+14 |   @dataclass
+15 |   class Point:
+16 | /     """
+17 | |     A point defined by 2 floats representing a length on a normalized
+18 | |     orthogonal coordinate system
+19 | |     default coordinate is the origin
+20 | |
+21 | |     >>> Point(-1.0, 0.0)
+22 | |     Point(x=-1.0, y=0.0)
+23 | |     """
+   | |_______^
+24 |
+25 |       x: float = 0.0
+   |
+help: Add closing punctuation
+   |
+18 |     orthogonal coordinate system
+   -     default coordinate is the origin
+19 +     default coordinate is the origin.
+20 |
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+D105 Missing docstring in magic method
+  --> geometry/braik_mac_construction.py:28:9
+   |
+26 |     y: float = 0.0
+27 |
+28 |     def __post_init__(self) -> None:
+   |         ^^^^^^^^^^^^^
+29 |         if not isinstance(self.x, (int, float)):
+30 |             raise TypeError("x must be an int or float numeric value")
+   |
+
+TRY003 Avoid specifying long messages outside the exception class
+  --> geometry/braik_mac_construction.py:30:19
+   |
+28 |     def __post_init__(self) -> None:
+29 |         if not isinstance(self.x, (int, float)):
+30 |             raise TypeError("x must be an int or float numeric value")
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+31 |         if not isinstance(self.y, (int, float)):
+32 |             raise TypeError("y must be an int or float numeric value")
+   |
+
+EM101 Exception must not use a string literal, assign to variable first
+  --> geometry/braik_mac_construction.py:30:29
+   |
+28 |     def __post_init__(self) -> None:
+29 |         if not isinstance(self.x, (int, float)):
+30 |             raise TypeError("x must be an int or float numeric value")
+   |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+31 |         if not isinstance(self.y, (int, float)):
+32 |             raise TypeError("y must be an int or float numeric value")
+   |
+help: Assign to variable; remove string literal
+   |
+29 |         if not isinstance(self.x, (int, float)):
+   -             raise TypeError("x must be an int or float numeric value")
+30 +             msg = "x must be an int or float numeric value"
+31 +             raise TypeError(msg)
+32 |         if not isinstance(self.y, (int, float)):
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+TRY003 Avoid specifying long messages outside the exception class
+  --> geometry/braik_mac_construction.py:32:19
+   |
+30 |             raise TypeError("x must be an int or float numeric value")
+31 |         if not isinstance(self.y, (int, float)):
+32 |             raise TypeError("y must be an int or float numeric value")
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+EM101 Exception must not use a string literal, assign to variable first
+  --> geometry/braik_mac_construction.py:32:29
+   |
+30 |             raise TypeError("x must be an int or float numeric value")
+31 |         if not isinstance(self.y, (int, float)):
+32 |             raise TypeError("y must be an int or float numeric value")
+   |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+help: Assign to variable; remove string literal
+   |
+31 |         if not isinstance(self.y, (int, float)):
+   -             raise TypeError("y must be an int or float numeric value")
+32 +             msg = "y must be an int or float numeric value"
+33 +             raise TypeError(msg)
+34 |
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+D205 1 blank line required between summary line and description
+  --> geometry/braik_mac_construction.py:37:5
+   |
+35 |   @dataclass
+36 |   class BraikMac:
+37 | /     """
+38 | |     Given a list of 5 points, determine the corresponding
+39 | |     conic section equation and provide it to the user
+40 | |
+41 | |     | x**2   xy  y**2  x  y  1 |
+42 | |     | x1**2 x1y1 y1**2 x1 y1 1 |
+43 | |     | x2**2 x2y2 y2**2 x2 y2 1 | = 0
+44 | |     | x3**2 x3y3 y3**2 x3 y3 1 |
+45 | |     | x4**2 x4y4 y4**2 x4 y4 1 |
+46 | |     | x5**2 x5y5 y5**2 x5 y5 1 |
+47 | |
+48 | |     >>> p1 = Point(0.0,0.0)
+49 | |     >>> p2 = Point(5.0,0.0)
+50 | |     >>> p3 = Point(2.0,3.0)
+51 | |     >>> p4 = Point(1.0,10.0)
+52 | |     >>> p5 = Point(6.0,7.0)
+53 | |     >>> BraikMac([p1,p2,p3,p4,p5]) # doctest: +NORMALIZE_WHITESPACE
+54 | |     BraikMac(p_list=[Point(x=0.0, y=0.0), Point(x=5.0, y=0.0),
+55 | |     Point(x=2.0, y=3.0), Point(x=1.0, y=10.0), Point(x=6.0, y=7.0)])
+56 | |     """
+   | |_______^
+57 |
+58 |       p_list: list[Point] = field(default_factory=list)
+   |
+help: Insert single blank line
+
+D212 [*] Multi-line docstring summary should start at the first line
+  --> geometry/braik_mac_construction.py:37:5
+   |
+35 |   @dataclass
+36 |   class BraikMac:
+37 | /     """
+38 | |     Given a list of 5 points, determine the corresponding
+39 | |     conic section equation and provide it to the user
+40 | |
+41 | |     | x**2   xy  y**2  x  y  1 |
+42 | |     | x1**2 x1y1 y1**2 x1 y1 1 |
+43 | |     | x2**2 x2y2 y2**2 x2 y2 1 | = 0
+44 | |     | x3**2 x3y3 y3**2 x3 y3 1 |
+45 | |     | x4**2 x4y4 y4**2 x4 y4 1 |
+46 | |     | x5**2 x5y5 y5**2 x5 y5 1 |
+47 | |
+48 | |     >>> p1 = Point(0.0,0.0)
+49 | |     >>> p2 = Point(5.0,0.0)
+50 | |     >>> p3 = Point(2.0,3.0)
+51 | |     >>> p4 = Point(1.0,10.0)
+52 | |     >>> p5 = Point(6.0,7.0)
+53 | |     >>> BraikMac([p1,p2,p3,p4,p5]) # doctest: +NORMALIZE_WHITESPACE
+54 | |     BraikMac(p_list=[Point(x=0.0, y=0.0), Point(x=5.0, y=0.0),
+55 | |     Point(x=2.0, y=3.0), Point(x=1.0, y=10.0), Point(x=6.0, y=7.0)])
+56 | |     """
+   | |_______^
+57 |
+58 |       p_list: list[Point] = field(default_factory=list)
+   |
+help: Remove whitespace after opening quotes
+   |
+36 | class BraikMac:
+   -     """
+   -     Given a list of 5 points, determine the corresponding
+37 +     """Given a list of 5 points, determine the corresponding
+38 |     conic section equation and provide it to the user
+   |
+
+D400 First line should end with a period
+  --> geometry/braik_mac_construction.py:37:5
+   |
+35 |   @dataclass
+36 |   class BraikMac:
+37 | /     """
+38 | |     Given a list of 5 points, determine the corresponding
+39 | |     conic section equation and provide it to the user
+40 | |
+41 | |     | x**2   xy  y**2  x  y  1 |
+42 | |     | x1**2 x1y1 y1**2 x1 y1 1 |
+43 | |     | x2**2 x2y2 y2**2 x2 y2 1 | = 0
+44 | |     | x3**2 x3y3 y3**2 x3 y3 1 |
+45 | |     | x4**2 x4y4 y4**2 x4 y4 1 |
+46 | |     | x5**2 x5y5 y5**2 x5 y5 1 |
+47 | |
+48 | |     >>> p1 = Point(0.0,0.0)
+49 | |     >>> p2 = Point(5.0,0.0)
+50 | |     >>> p3 = Point(2.0,3.0)
+51 | |     >>> p4 = Point(1.0,10.0)
+52 | |     >>> p5 = Point(6.0,7.0)
+53 | |     >>> BraikMac([p1,p2,p3,p4,p5]) # doctest: +NORMALIZE_WHITESPACE
+54 | |     BraikMac(p_list=[Point(x=0.0, y=0.0), Point(x=5.0, y=0.0),
+55 | |     Point(x=2.0, y=3.0), Point(x=1.0, y=10.0), Point(x=6.0, y=7.0)])
+56 | |     """
+   | |_______^
+57 |
+58 |       p_list: list[Point] = field(default_factory=list)
+   |
+help: Add period
+   |
+38 |     Given a list of 5 points, determine the corresponding
+   -     conic section equation and provide it to the user
+39 +     conic section equation and provide it to the user.
+40 |
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+D415 First line should end with a period, question mark, or exclamation point
+  --> geometry/braik_mac_construction.py:37:5
+   |
+35 |   @dataclass
+36 |   class BraikMac:
+37 | /     """
+38 | |     Given a list of 5 points, determine the corresponding
+39 | |     conic section equation and provide it to the user
+40 | |
+41 | |     | x**2   xy  y**2  x  y  1 |
+42 | |     | x1**2 x1y1 y1**2 x1 y1 1 |
+43 | |     | x2**2 x2y2 y2**2 x2 y2 1 | = 0
+44 | |     | x3**2 x3y3 y3**2 x3 y3 1 |
+45 | |     | x4**2 x4y4 y4**2 x4 y4 1 |
+46 | |     | x5**2 x5y5 y5**2 x5 y5 1 |
+47 | |
+48 | |     >>> p1 = Point(0.0,0.0)
+49 | |     >>> p2 = Point(5.0,0.0)
+50 | |     >>> p3 = Point(2.0,3.0)
+51 | |     >>> p4 = Point(1.0,10.0)
+52 | |     >>> p5 = Point(6.0,7.0)
+53 | |     >>> BraikMac([p1,p2,p3,p4,p5]) # doctest: +NORMALIZE_WHITESPACE
+54 | |     BraikMac(p_list=[Point(x=0.0, y=0.0), Point(x=5.0, y=0.0),
+55 | |     Point(x=2.0, y=3.0), Point(x=1.0, y=10.0), Point(x=6.0, y=7.0)])
+56 | |     """
+   | |_______^
+57 |
+58 |       p_list: list[Point] = field(default_factory=list)
+   |
+help: Add closing punctuation
+   |
+38 |     Given a list of 5 points, determine the corresponding
+   -     conic section equation and provide it to the user
+39 +     conic section equation and provide it to the user.
+40 |
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+D105 Missing docstring in magic method
+  --> geometry/braik_mac_construction.py:60:9
+   |
+58 |     p_list: list[Point] = field(default_factory=list)
+59 |
+60 |     def __post_init__(self) -> None:
+   |         ^^^^^^^^^^^^^
+61 |         n = 0
+62 |         for p in self.p_list:
+   |
+
+TRY003 Avoid specifying long messages outside the exception class
+  --> geometry/braik_mac_construction.py:64:23
+   |
+62 |         for p in self.p_list:
+63 |             if not isinstance(p, Point):
+64 |                 raise TypeError("Array must be point objects.")
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+65 |             n += 1
+66 |         if n != 5:
+   |
+
+EM101 Exception must not use a string literal, assign to variable first
+  --> geometry/braik_mac_construction.py:64:33
+   |
+62 |         for p in self.p_list:
+63 |             if not isinstance(p, Point):
+64 |                 raise TypeError("Array must be point objects.")
+   |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+65 |             n += 1
+66 |         if n != 5:
+   |
+help: Assign to variable; remove string literal
+   |
+63 |             if not isinstance(p, Point):
+   -                 raise TypeError("Array must be point objects.")
+64 +                 msg = "Array must be point objects."
+65 +                 raise TypeError(msg)
+66 |             n += 1
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+TRY003 Avoid specifying long messages outside the exception class
+  --> geometry/braik_mac_construction.py:67:19
+   |
+65 |             n += 1
+66 |         if n != 5:
+67 |             raise TypeError("Array must be 5 point objects.")
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+68 |
+69 |     @property
+   |
+
+EM101 Exception must not use a string literal, assign to variable first
+  --> geometry/braik_mac_construction.py:67:29
+   |
+65 |             n += 1
+66 |         if n != 5:
+67 |             raise TypeError("Array must be 5 point objects.")
+   |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+68 |
+69 |     @property
+   |
+help: Assign to variable; remove string literal
+   |
+66 |         if n != 5:
+   -             raise TypeError("Array must be 5 point objects.")
+67 +             msg = "Array must be 5 point objects."
+68 +             raise TypeError(msg)
+69 |
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+D102 Missing docstring in public method
+  --> geometry/braik_mac_construction.py:70:9
+   |
+69 |     @property
+70 |     def generate(self) -> str:
+   |         ^^^^^^^^
+71 |         x1 = self.p_list[0].x
+72 |         y1 = self.p_list[0].y
+   |
+
+COM812 [*] Trailing comma missing
+  --> geometry/braik_mac_construction.py:89:14
+   |
+87 |                 [x4 * y4, y4**2, x4, y4, 1],
+88 |                 [x5 * y5, y5**2, x5, y5, 1],
+89 |             ]
+   |              ^
+90 |         )
+   |
+help: Add trailing comma
+   |
+88 |                 [x5 * y5, y5**2, x5, y5, 1],
+   -             ]
+89 +             ],
+90 |         )
+   |
+
+COM812 [*] Trailing comma missing
+   --> geometry/braik_mac_construction.py:101:14
+    |
+ 99 |                 [x4**2, y4**2, x4, y4, 1],
+100 |                 [x5**2, y5**2, x5, y5, 1],
+101 |             ]
+    |              ^
+102 |         )
+    |
+help: Add trailing comma
+    |
+100 |                 [x5**2, y5**2, x5, y5, 1],
+    -             ]
+101 +             ],
+102 |         )
+    |
+
+COM812 [*] Trailing comma missing
+   --> geometry/braik_mac_construction.py:113:14
+    |
+111 |                 [x4**2, x4 * y4, x4, y4, 1],
+112 |                 [x5**2, x5 * y5, x5, y5, 1],
+113 |             ]
+    |              ^
+114 |         )
+    |
+help: Add trailing comma
+    |
+112 |                 [x5**2, x5 * y5, x5, y5, 1],
+    -             ]
+113 +             ],
+114 |         )
+    |
+
+COM812 [*] Trailing comma missing
+   --> geometry/braik_mac_construction.py:125:14
+    |
+123 |                 [x4**2, x4 * y4, y4**2, y4, 1],
+124 |                 [x5**2, x5 * y5, y5**2, y5, 1],
+125 |             ]
+    |              ^
+126 |         )
+    |
+help: Add trailing comma
+    |
+124 |                 [x5**2, x5 * y5, y5**2, y5, 1],
+    -             ]
+125 +             ],
+126 |         )
+    |
+
+COM812 [*] Trailing comma missing
+   --> geometry/braik_mac_construction.py:137:14
+    |
+135 |                 [x4**2, x4 * y4, y4**2, x4, 1],
+136 |                 [x5**2, x5 * y5, y5**2, x5, 1],
+137 |             ]
+    |              ^
+138 |         )
+    |
+help: Add trailing comma
+    |
+136 |                 [x5**2, x5 * y5, y5**2, x5, 1],
+    -             ]
+137 +             ],
+138 |         )
+    |
+
+COM812 [*] Trailing comma missing
+   --> geometry/braik_mac_construction.py:149:14
+    |
+147 |                 [x4**2, x4 * y4, y4**2, x4, y4],
+148 |                 [x5**2, x5 * y5, y5**2, x5, y5],
+149 |             ]
+    |              ^
+150 |         )
+    |
+help: Add trailing comma
+    |
+148 |                 [x5**2, x5 * y5, y5**2, x5, y5],
+    -             ]
+149 +             ],
+150 |         )
+    |
+
+Found 28 errors.
+[*] 9 fixable with `--fix` (8 unsafe fixes available with `--fix --unsafe-fixes`).

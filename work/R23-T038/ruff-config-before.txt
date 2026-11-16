@@ -1,0 +1,11 @@
+Command:
+
+```text
+uvx ruff check geometry/braik_mac_construction.py
+```
+
+Output:
+
+```text
+All checks passed!
+```

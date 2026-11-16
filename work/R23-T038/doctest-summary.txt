@@ -1,0 +1,13 @@
+Command:
+
+```text
+uv run python -m doctest -v geometry/braik_mac_construction.py
+```
+
+Summary:
+
+```text
+7 tests in 12 items.
+7 passed.
+Test passed.
+```

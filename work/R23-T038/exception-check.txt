@@ -1,0 +1,11 @@
+Focused check of the four existing `TypeError` paths:
+
+```text
+Point.x: TypeError('x must be an int or float numeric value')
+Point.y: TypeError('y must be an int or float numeric value')
+BraikMac element type: TypeError('Array must be point objects.')
+BraikMac count: TypeError('Array must be 5 point objects.')
+```
+
+The exception types and exact messages are unchanged by assigning each message
+to a local variable before raising.
