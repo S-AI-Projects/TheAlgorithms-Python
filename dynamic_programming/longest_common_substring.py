@@ -12,7 +12,11 @@ Example:
 
 def longest_common_substring(text1: str, text2: str) -> str:
     """
-    Finds the longest common substring between two strings.
+    Find the longest common substring between two strings.
+
+    Time complexity is O(n * m), since each pair of characters is checked once.
+    Space complexity is O(min(n, m)), since only two rows of the DP table are
+    kept.
 
     >>> longest_common_substring("", "")
     ''
@@ -38,6 +42,12 @@ def longest_common_substring(text1: str, text2: str) -> str:
     Traceback (most recent call last):
         ...
     ValueError: longest_common_substring() takes two strings for inputs
+    >>> longest_common_substring("xyz", "axyz")
+    'xyz'
+    >>> longest_common_substring("abc", "xyz")
+    ''
+    >>> longest_common_substring("abc", "zzabcx")
+    'abc'
     """
 
     if not (isinstance(text1, str) and isinstance(text2, str)):
@@ -46,22 +56,28 @@ def longest_common_substring(text1: str, text2: str) -> str:
     if not text1 or not text2:
         return ""
 
-    text1_length = len(text1)
-    text2_length = len(text2)
+    if len(text1) >= len(text2):
+        longer_text, shorter_text = text1, text2
+    else:
+        longer_text, shorter_text = text2, text1
 
-    dp = [[0] * (text2_length + 1) for _ in range(text1_length + 1)]
+    previous_row = [0] * (len(shorter_text) + 1)
+    current_row = [0] * (len(shorter_text) + 1)
     end_pos = 0
     max_length = 0
 
-    for i in range(1, text1_length + 1):
-        for j in range(1, text2_length + 1):
-            if text1[i - 1] == text2[j - 1]:
-                dp[i][j] = 1 + dp[i - 1][j - 1]
-                if dp[i][j] > max_length:
+    for i, longer_char in enumerate(longer_text, start=1):
+        for j, shorter_char in enumerate(shorter_text, start=1):
+            if longer_char == shorter_char:
+                current_row[j] = previous_row[j - 1] + 1
+                if current_row[j] > max_length:
                     end_pos = i
-                    max_length = dp[i][j]
+                    max_length = current_row[j]
+            else:
+                current_row[j] = 0
+        previous_row, current_row = current_row, previous_row
 
-    return text1[end_pos - max_length : end_pos]
+    return longer_text[end_pos - max_length : end_pos]
 
 
 if __name__ == "__main__":
