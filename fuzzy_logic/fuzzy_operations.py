@@ -90,7 +90,7 @@ class FuzzySet:
             1 - self.peak,
         )
 
-    def intersection(self, other) -> FuzzySet:
+    def intersection(self, other: FuzzySet) -> FuzzySet:
         """
         Calculate the intersection of this fuzzy set
         with another fuzzy set.
@@ -138,7 +138,7 @@ class FuzzySet:
         msg = f"Invalid value {x} for fuzzy set {self}"
         raise ValueError(msg)
 
-    def union(self, other) -> FuzzySet:
+    def union(self, other: FuzzySet) -> FuzzySet:
         """
         Calculate the union of this fuzzy set with another fuzzy set.
         Args:

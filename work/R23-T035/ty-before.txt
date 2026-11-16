@@ -1,0 +1,20 @@
+Command:
+
+```text
+uv run --python 3.15 --with ty ty check fuzzy_logic/fuzzy_operations.py
+```
+
+Output:
+
+```text
+pyproject.toml:319:7: warning[renamed-rule] Rule `call-non-callable` has been renamed to `not-callable`
+pyproject.toml:321:7: warning[renamed-rule] Rule `invalid-return-type` has been renamed to `invalid-explicit-return`
+pyproject.toml:326:7: warning[renamed-rule] Rule `unresolved-attribute` has been renamed to `missing-attribute`
+pyproject.toml:327:7: warning[renamed-rule] Rule `unresolved-import` has been renamed to `import-not-found`
+
+Found 4 diagnostics
+```
+
+The command exited with status 1 because of the four existing renamed-rule
+warnings in `pyproject.toml`. No type diagnostic for
+`fuzzy_logic/fuzzy_operations.py` was emitted in the baseline output.
