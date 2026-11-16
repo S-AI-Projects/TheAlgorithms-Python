@@ -28,7 +28,22 @@ def edit_distance(source: str, target: str) -> int:
     5
     >>> edit_distance("lstring", "lsstring")
     1
+    >>> edit_distance("same", "same")
+    0
+    >>> edit_distance("kitten", "sitting")
+    3
+    >>> edit_distance("sitting", "kitten")
+    3
+    >>> edit_distance("", "")
+    0
+    >>> edit_distance(1, "a")
+    Traceback (most recent call last):
+        ...
+    TypeError: edit_distance() arguments must be strings
     """
+    if not isinstance(source, str) or not isinstance(target, str):
+        raise TypeError("edit_distance() arguments must be strings")
+
     if len(source) == 0:
         return len(target)
     elif len(target) == 0:
