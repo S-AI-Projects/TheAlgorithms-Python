@@ -1,7 +1,19 @@
-"""
-An implementation of the ear clipping method for triangulating a simple polygon.
+"""Triangulate simple polygons by repeatedly clipping ears.
 
-Wikipedia : https://en.wikipedia.org/wiki/Polygon_triangulation
+Ear clipping scans the vertices for a convex corner whose neighbor triangle contains
+no other polygon vertex, emits that triangle, and removes the corner. Repeating this
+process reduces a simple polygon with n vertices to n - 2 triangles. Vertices must
+be supplied in boundary order, clockwise or counterclockwise; this implementation
+assumes a valid simple polygon and does not validate self-intersections.
+
+Reference: https://en.wikipedia.org/wiki/Polygon_triangulation#Ear_clipping
+
+For example, this five-vertex concave polygon is reduced to three triangles:
+
+>>> len(triangulate_polygon(
+...     [(0, 0), (2, 0), (1, 1), (2, 2), (0, 2)]
+... )) == 5 - 2
+True
 """
 
 
