@@ -1,0 +1,13 @@
+Command:
+
+```text
+uv run python -m doctest -v graphs/greedy_min_vertex_cover.py
+```
+
+Summary:
+
+```text
+23 tests in 2 items.
+23 passed.
+Test passed.
+```

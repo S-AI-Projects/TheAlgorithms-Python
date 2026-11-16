@@ -1,0 +1,11 @@
+Command:
+
+```text
+uv run pytest graphs/greedy_min_vertex_cover.py --cov=graphs.greedy_min_vertex_cover --cov-branch --cov-report=term-missing
+```
+
+Result:
+
+```text
+graphs/greedy_min_vertex_cover.py    23    0    12    0    100%
+```

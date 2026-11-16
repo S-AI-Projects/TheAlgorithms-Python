@@ -15,6 +15,68 @@ def greedy_min_vertex_cover(graph: dict) -> set[int]:
     @input: graph (graph stored in an adjacency list where each vertex
             is represented with an integer)
     @example:
+
+    An empty graph has an empty vertex cover:
+    >>> empty_graph = {}
+    >>> empty_cover = greedy_min_vertex_cover(empty_graph)
+    >>> empty_cover
+    set()
+    >>> all(
+    ...     vertex in empty_cover or neighbor in empty_cover
+    ...     for vertex, neighbors in empty_graph.items()
+    ...     for neighbor in neighbors
+    ... )
+    True
+
+    A graph with one edge (and one isolated vertex) needs one endpoint:
+    >>> single_edge_graph = {0: [1], 1: [0], 2: []}
+    >>> single_edge_cover = greedy_min_vertex_cover(single_edge_graph)
+    >>> single_edge_cover
+    {0}
+    >>> all(
+    ...     vertex in single_edge_cover or neighbor in single_edge_cover
+    ...     for vertex, neighbors in single_edge_graph.items()
+    ...     for neighbor in neighbors
+    ... )
+    True
+
+    The center covers every edge in a star:
+    >>> star_graph = {0: [1, 2, 3, 4], 1: [0], 2: [0], 3: [0], 4: [0]}
+    >>> star_cover = greedy_min_vertex_cover(star_graph)
+    >>> star_cover
+    {0}
+    >>> all(
+    ...     vertex in star_cover or neighbor in star_cover
+    ...     for vertex, neighbors in star_graph.items()
+    ...     for neighbor in neighbors
+    ... )
+    True
+
+    Opposite vertices cover every edge in a four-vertex cycle:
+    >>> cycle_graph = {0: [1, 3], 1: [0, 2], 2: [1, 3], 3: [2, 0]}
+    >>> cycle_cover = greedy_min_vertex_cover(cycle_graph)
+    >>> cycle_cover
+    {0, 2}
+    >>> all(
+    ...     vertex in cycle_cover or neighbor in cycle_cover
+    ...     for vertex, neighbors in cycle_graph.items()
+    ...     for neighbor in neighbors
+    ... )
+    True
+
+    Non-mapping input raises an attribute error when adjacency entries are read:
+    >>> greedy_min_vertex_cover(None)
+    Traceback (most recent call last):
+    ...
+    AttributeError: 'NoneType' object has no attribute 'items'
+
+    Running this module directly also exercises its demonstration block:
+    >>> from contextlib import redirect_stdout
+    >>> from io import StringIO
+    >>> import runpy
+    >>> with redirect_stdout(StringIO()):
+    ...     runpy.run_path(__file__, run_name="__main__")
+
     >>> graph = {0: [1, 3], 1: [0, 3], 2: [0, 3, 4], 3: [0, 1, 2], 4: [2, 3]}
     >>> greedy_min_vertex_cover(graph)
     {0, 1, 2, 4}

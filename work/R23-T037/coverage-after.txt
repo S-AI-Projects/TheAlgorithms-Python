@@ -1,0 +1,94 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.15.2, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/rajpatil/SnAiProject/TheAlgorithms-Python
+configfile: pyproject.toml
+plugins: cov-7.1.0, anyio-4.15.1
+collected 1 item
+
+graphs/greedy_min_vertex_cover.py .                                      [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.15.2-final-0 _______________
+
+Name                                                       Stmts   Miss  Cover   Missing
+----------------------------------------------------------------------------------------
+graphs/a_star.py                                              64     64     0%   1-138
+graphs/ant_colony_optimization_algorithms.py                  54     54     0%   14-224
+graphs/articulation_points.py                                 33     33     0%   2-55
+graphs/basic_graphs.py                                       169    169     0%   1-439
+graphs/bellman_ford.py                                        36     36     0%   1-73
+graphs/bi_directional_dijkstra.py                             48     48     0%   13-140
+graphs/bidirectional_a_star.py                               139    139     0%   8-311
+graphs/bidirectional_breadth_first_search.py                  95     95     0%   5-188
+graphs/bidirectional_search.py                                54     54     0%   14-201
+graphs/boruvka.py                                             60     60     0%   28-176
+graphs/breadth_first_search.py                                36     36     0%   5-93
+graphs/breadth_first_search_2.py                              40     40     0%   16-86
+graphs/breadth_first_search_shortest_path.py                  32     32     0%   5-90
+graphs/breadth_first_search_shortest_path_2.py                41     41     0%   8-113
+graphs/breadth_first_search_zero_one_shortest_path.py         47     47     0%   7-143
+graphs/check_bipatrite.py                                     40     40     0%   1-153
+graphs/check_cycle.py                                         18     18     0%   6-52
+graphs/connected_components.py                                21     21     0%   8-58
+graphs/deep_clone_graph.py                                    30     30     0%   13-78
+graphs/depth_first_search.py                                  15     15     0%   3-48
+graphs/depth_first_search_2.py                                36     36     0%   6-127
+graphs/dijkstra.py                                            34     34     0%   39-130
+graphs/dijkstra_2.py                                          39     39     0%   1-126
+graphs/dijkstra_algorithm.py                                 131    131     0%   5-460
+graphs/dijkstra_alternate.py                                  32     32     0%   1-98
+graphs/dijkstra_binary_grid.py                                39     39     0%   9-89
+graphs/dinic.py                                               59     59     0%   1-94
+graphs/directed_and_undirected_weighted_graph.py             348    348     0%   1-615
+graphs/edmonds_blossom_algorithm.py                          107    107     0%   1-267
+graphs/edmonds_karp_multiple_source_and_sink.py              116    116     0%   1-193
+graphs/eulerian_path_and_circuit_for_undirected_graph.py      52     52     0%   8-141
+graphs/even_tree.py                                           24     24     0%   17-60
+graphs/finding_bridges.py                                     28     28     0%   13-106
+graphs/frequent_pattern_graph_miner.py                       119    119     0%   14-234
+graphs/g_topological_sort.py                                  24     24     0%   3-47
+graphs/gale_shapley_bigraph.py                                25     25     0%   1-49
+graphs/graph_adjacency_list.py                               246    246     0%   19-597
+graphs/graph_adjacency_matrix.py                             260    260     0%   19-609
+graphs/graph_centrality.py                                    56     56     0%   57-386
+graphs/graph_list.py                                          33     33     0%   6-150
+graphs/graph_peripherality.py                                 58     58     0%   55-393
+graphs/graphs_floyd_warshall.py                               34     34     0%   8-100
+graphs/greedy_best_first.py                                   72     72     0%   5-199
+graphs/hopcroft_karp.py                                       88     88     0%   48-321
+graphs/johnson.py                                             62     62     0%   1-118
+graphs/kahns_algorithm_long.py                                20     20     0%   2-30
+graphs/kahns_algorithm_topo.py                                26     26     0%   1-71
+graphs/karger.py                                              28     28     0%   5-85
+graphs/lanczos_eigenvectors.py                                56     56     0%   29-206
+graphs/markov_chain.py                                        37     37     0%   1-84
+graphs/matching_min_vertex_cover.py                           20     20     0%   11-59
+graphs/minimum_path_sum.py                                    19     19     0%   1-63
+graphs/minimum_spanning_tree_boruvka.py                      123    123     0%   1-196
+graphs/minimum_spanning_tree_kruskal.py                       17     17     0%   1-35
+graphs/minimum_spanning_tree_kruskal2.py                      62     62     0%   1-121
+graphs/minimum_spanning_tree_prims.py                         78     78     0%   1-124
+graphs/minimum_spanning_tree_prims2.py                       126    126     0%   10-269
+graphs/multi_heuristic_astar.py                              192    192     0%   1-312
+graphs/page_rank.py                                           45     45     0%   5-79
+graphs/prim.py                                                60     60     0%   8-152
+graphs/random_graph_generator.py                              19     19     0%   9-67
+graphs/scc_kosaraju.py                                        39     39     0%   1-54
+graphs/strongly_connected_components.py                       35     35     0%   8-90
+graphs/tarjans_scc.py                                         47     47     0%   1-106
+graphs/tests/test_edmonds_blossom_algorithm.py                39     39     0%   1-72
+graphs/tests/test_graphs_floyd_warshall.py                    19     19     0%   1-40
+graphs/tests/test_johnson.py                                  12     12     0%   1-24
+graphs/tests/test_min_spanning_tree_kruskal.py                 7      7     0%   1-36
+graphs/tests/test_min_spanning_tree_prim.py                   15     15     0%   1-46
+graphs/travelling_salesman_problem.py                         72     72     0%   3-243
+graphs/__init__.py                                             0      0   100%
+graphs/greedy_min_vertex_cover.py                             23      0   100%
+graphs/tests/__init__.py                                       0      0   100%
+----------------------------------------------------------------------------------------
+TOTAL                                                       4430   4407     1%
+============================= slowest 10 durations =============================
+0.12s call     graphs/greedy_min_vertex_cover.py::graphs.greedy_min_vertex_cover.greedy_min_vertex_cover
+
+(2 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================== 1 passed in 0.42s ===============================

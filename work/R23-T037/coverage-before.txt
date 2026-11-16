@@ -1,0 +1,16 @@
+Command:
+
+```text
+uv run pytest graphs/greedy_min_vertex_cover.py --cov=graphs --cov-report=term-missing
+```
+
+Baseline row for the target file:
+
+```text
+graphs/greedy_min_vertex_cover.py    23    4    83%    59-64
+```
+
+The uncovered statements were the `if __name__ == "__main__"` demonstration
+block (`doctest.testmod()` and the example `print`). The existing doctest
+exercised the function body, but importing the module did not execute this
+script-only block.
