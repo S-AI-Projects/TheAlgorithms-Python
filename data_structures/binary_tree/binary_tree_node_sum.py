@@ -53,9 +53,27 @@ class BinaryTreeNodeSum:
     >>> tree.right.right = Node(0)
     >>> sum(BinaryTreeNodeSum(tree))
     32
+
+    An empty tree has sum zero:
+
+    >>> sum(BinaryTreeNodeSum(None))
+    0
+
+    A single-node tree returns that node's value:
+
+    >>> single_node_tree = Node(7)
+    >>> sum(BinaryTreeNodeSum(single_node_tree))
+    7
+
+    Negative values are included in the sum:
+
+    >>> negative_tree = Node(-2)
+    >>> negative_tree.left = Node(-3)
+    >>> sum(BinaryTreeNodeSum(negative_tree))
+    -5
     """
 
-    def __init__(self, tree: Node) -> None:
+    def __init__(self, tree: Node | None) -> None:
         self.tree = tree
 
     def depth_first_search(self, node: Node | None) -> int:
