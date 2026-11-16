@@ -27,6 +27,12 @@ def fractional_knapsack(
     (25, [1, 1, 1, 1, 1])
     >>> fractional_knapsack([], [], 30)
     (0, [])
+    >>> fractional_knapsack([60, 100, 120], [10, 20, 30], 0)
+    (0.0, [0.0, 0, 0])
+    >>> fractional_knapsack([60, 100, 120], [10, 20, 30], 80)
+    (280, [1, 1, 1])
+    >>> fractional_knapsack([10], [3], 1)
+    (3.3333333333333335, [0.3333333333333333])
     """
     index = list(range(len(value)))
     ratio = [v / w for v, w in zip(value, weight)]
