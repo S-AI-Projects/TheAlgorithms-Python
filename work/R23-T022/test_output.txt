@@ -1,0 +1,102 @@
+Trying:
+    binary_search_by_recursion([0, 5, 7, 10, 15], 0, 0, 4)
+Expecting:
+    0
+ok
+Trying:
+    binary_search_by_recursion([0, 5, 7, 10, 15], 15, 0, 4)
+Expecting:
+    4
+ok
+Trying:
+    binary_search_by_recursion([0, 5, 7, 10, 15], 5, 0, 4)
+Expecting:
+    1
+ok
+Trying:
+    binary_search_by_recursion([0, 5, 7, 10, 15], 6, 0, 4)
+Expecting:
+    -1
+ok
+Trying:
+    binary_search_by_recursion([0, 5, 7, 10, 15], -1)
+Expecting:
+    -1
+ok
+Trying:
+    binary_search_by_recursion([0, 5, 7, 10, 15], 16)
+Expecting:
+    -1
+ok
+Trying:
+    exponential_search([0, 5, 7, 10, 15], 0)
+Expecting:
+    0
+ok
+Trying:
+    exponential_search([0, 5, 7, 10, 15], 15)
+Expecting:
+    4
+ok
+Trying:
+    exponential_search([0, 5, 7, 10, 15], 5)
+Expecting:
+    1
+ok
+Trying:
+    exponential_search([0, 5, 7, 10, 15], 6)
+Expecting:
+    -1
+ok
+Trying:
+    exponential_search([0, 5, 7, 10, 15], -3)
+Expecting:
+    -1
+ok
+Trying:
+    exponential_search([0, 5, 7, 10, 15], 20)
+Expecting:
+    -1
+ok
+Trying:
+    exponential_search([], 1)  # Empty array edge case
+Expecting:
+    -1
+ok
+Trying:
+    exponential_search([10, 20, 30, 40, 50, 60, 70, 80], 10)
+Expecting:
+    0
+ok
+Trying:
+    exponential_search([10, 20, 30, 40, 50, 60, 70, 80], 80)
+Expecting:
+    7
+ok
+Trying:
+    exponential_search([10, 20, 30, 40, 50, 60, 70, 80], 45)
+Expecting:
+    -1
+ok
+1 item had no tests:
+    exponential_search
+2 items passed all tests:
+   6 tests in exponential_search.binary_search_by_recursion
+  10 tests in exponential_search.exponential_search
+16 tests in 3 items.
+16 passed.
+Test passed.
+============================= test session starts ==============================
+platform darwin -- Python 3.15.2, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/md.sohail/Documents/snai/TheAlgorithms-Python
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collected 2 items
+
+searches/exponential_search.py ..                                        [100%]
+
+============================= slowest 10 durations =============================
+0.01s call     searches/exponential_search.py::searches.exponential_search.binary_search_by_recursion
+
+(5 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================== 2 passed in 0.02s ===============================
