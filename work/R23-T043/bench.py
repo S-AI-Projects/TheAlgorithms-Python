@@ -5,7 +5,6 @@
 import csv
 import statistics
 import sys
-from collections.abc import Callable
 from pathlib import Path
 from timeit import repeat
 
@@ -26,26 +25,23 @@ PHI = (1 + 5**0.5) / 2
 OUTPUT_DIR = Path(__file__).resolve().parent
 
 
-def median_seconds_per_call(
-    function: Callable[[int], int], n: int, number: int
-) -> float:
-    """Return the median time per call over repeated timeit measurements."""
-    samples = repeat(lambda: function(n), number=number, repeat=REPEATS)
-    return statistics.median(samples) / number
-
-
-def main() -> None:
+if __name__ == "__main__":
     rows = []
     for n in SIZES:
+        recursive_samples = repeat(
+            lambda n=n: recursive_lucas_number(n), number=1, repeat=REPEATS
+        )
+        dynamic_samples = repeat(
+            lambda n=n: dynamic_lucas_number(n),
+            number=DYNAMIC_NUMBER,
+            repeat=REPEATS,
+        )
         rows.append(
             {
                 "n": n,
-                "recursive_seconds": median_seconds_per_call(
-                    recursive_lucas_number, n, 1
-                ),
-                "dynamic_seconds": median_seconds_per_call(
-                    dynamic_lucas_number, n, DYNAMIC_NUMBER
-                ),
+                "recursive_seconds": statistics.median(recursive_samples),
+                "dynamic_seconds": statistics.median(dynamic_samples)
+                / DYNAMIC_NUMBER,
             }
         )
 
@@ -88,7 +84,3 @@ def main() -> None:
             f"n={row['n']:2}: recursive={row['recursive_seconds']:.6g}s, "
             f"dynamic={row['dynamic_seconds']:.6g}s"
         )
-
-
-if __name__ == "__main__":
-    main()
