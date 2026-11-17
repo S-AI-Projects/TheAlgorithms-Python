@@ -15,15 +15,27 @@ from __future__ import annotations
 
 def pigeon_sort(array: list[int]) -> list[int]:
     """
-    Implementation of pigeon hole sort algorithm
+    Implementation of pigeon hole sort algorithm.
+
+    Complexity:
+        Time Complexity: O(n + range) where n is len(array) and
+        range = max(array) - min(array) + 1. Finding min/max takes O(n),
+        populating the holes takes O(n), and collecting elements takes O(range + n).
+        Space Complexity: O(range) for the auxiliary hole lists.
+
     :param array: Collection of comparable items
     :return: Collection sorted in ascending order
+
     >>> pigeon_sort([0, 5, 3, 2, 2])
     [0, 2, 2, 3, 5]
     >>> pigeon_sort([])
     []
     >>> pigeon_sort([-2, -5, -45])
     [-45, -5, -2]
+    >>> pigeon_sort([-1000, 50, -200, 0, 1000, -500])
+    [-1000, -500, -200, 0, 50, 1000]
+    >>> pigeon_sort([100000, 0, -100000])
+    [-100000, 0, 100000]
     """
     if len(array) == 0:
         return array
