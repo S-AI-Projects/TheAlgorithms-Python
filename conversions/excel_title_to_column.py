@@ -4,6 +4,13 @@ def excel_title_to_column(column_title: str) -> int:
     the column title in an Excel sheet, return
     its corresponding column number.
 
+    Input Contract:
+    - column_title must be an instance of str (TypeError raised otherwise).
+    - column_title must be a non-empty string of ASCII letters
+      (ValueError raised otherwise).
+    - Lowercase column titles (e.g., 'a', 'ab') are accepted and handled
+      by converting them to uppercase.
+
     >>> excel_title_to_column("A")
     1
     >>> excel_title_to_column("B")
@@ -24,8 +31,28 @@ def excel_title_to_column(column_title: str) -> int:
     Traceback (most recent call last):
         ...
     ValueError: Column title must contain only alphabetic characters.
+    >>> excel_title_to_column(" A")
+    Traceback (most recent call last):
+        ...
+    ValueError: Column title must contain only alphabetic characters.
+    >>> excel_title_to_column("\u03b1")
+    Traceback (most recent call last):
+        ...
+    ValueError: Column title must contain only alphabetic characters.
+    >>> excel_title_to_column(123)
+    Traceback (most recent call last):
+        ...
+    TypeError: column_title must be a str, got int
+    >>> excel_title_to_column(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: column_title must be a str, got NoneType
     """
-    if not column_title or not column_title.isalpha():
+    if not isinstance(column_title, str):
+        msg = f"column_title must be a str, got {type(column_title).__name__}"
+        raise TypeError(msg)
+
+    if not column_title or not column_title.isalpha() or not column_title.isascii():
         msg = "Column title must contain only alphabetic characters."
         raise ValueError(msg)
 
