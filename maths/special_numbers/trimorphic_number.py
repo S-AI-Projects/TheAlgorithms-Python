@@ -1,5 +1,5 @@
-"""
-A Trimorphic Number is a number whose cube ends in the same digits as the number itself.
+"""A Trimorphic Number is a number whose cube ends in the same digits as itself.
+
 For example, 4^3 = 64, which ends in 4.
 
 Reference: https://en.wikipedia.org/wiki/Automorphic_number#Trimorphic_numbers
@@ -7,8 +7,7 @@ Reference: https://en.wikipedia.org/wiki/Automorphic_number#Trimorphic_numbers
 
 
 def is_trimorphic(number: int) -> bool:
-    """
-    Checks if a number is a Trimorphic number.
+    """Check if a number is a Trimorphic number.
 
     :param number: The number to check
     :return: True if the number is trimorphic, False otherwise
@@ -38,7 +37,8 @@ def is_trimorphic(number: int) -> bool:
     ValueError: Input must be a non-negative integer
     """
     if number < 0:
-        raise ValueError("Input must be a non-negative integer")
+        msg = "Input must be a non-negative integer"
+        raise ValueError(msg)
 
     if number == 0:
         return True
