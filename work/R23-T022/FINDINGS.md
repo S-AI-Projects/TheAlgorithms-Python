@@ -96,3 +96,4 @@ We tested 7 doubling input sizes $n \in \{1000, 2000, 4000, 8000, 16000, 32000, 
    - Pure algorithmic search time at start is **0.034 µs** (flat, independent of $n$), confirming $O(1)$ best-case behavior.
    - At mid and end, search time scales logarithmically from **0.47 µs to 1.01 µs**.
    - The generated plot `exponential_search_benchmark.png` confirms the logarithmic scaling and matches the theoretical $2 \cdot \log_2 n$ curve.
+
