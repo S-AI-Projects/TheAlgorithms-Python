@@ -1,0 +1,15 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.15.0rc3, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/pruthvirajgojare/Desktop/TheAlgorithms-Python.worktrees/https-github-com-s-ai-projects-thealgorithms-pyt
+configfile: pyproject.toml
+plugins: cov-7.1.0, anyio-4.15.1
+collected 1 item
+
+maths/radix2_fft.py .                                                    [100%]
+
+============================= slowest 10 durations =============================
+
+(3 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================== 1 passed in 0.07s ===============================
+
+Exit status: 0
