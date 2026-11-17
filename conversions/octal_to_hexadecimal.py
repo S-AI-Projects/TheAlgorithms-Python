@@ -7,11 +7,25 @@ def octal_to_hex(octal: str) -> str:
     '0x40'
     >>> octal_to_hex("235")
     '0x9D'
+    >>> octal_to_hex("0")
+    '0x0'
+    >>> octal_to_hex("000")
+    '0x0'
+    >>> octal_to_hex("0o17")
+    '0xF'
     >>> octal_to_hex(17)
     Traceback (most recent call last):
         ...
     TypeError: Expected a string as input
     >>> octal_to_hex("Av")
+    Traceback (most recent call last):
+        ...
+    ValueError: Not a Valid Octal Number
+    >>> octal_to_hex("8")
+    Traceback (most recent call last):
+        ...
+    ValueError: Not a Valid Octal Number
+    >>> octal_to_hex("9")
     Traceback (most recent call last):
         ...
     ValueError: Not a Valid Octal Number
@@ -34,6 +48,9 @@ def octal_to_hex(octal: str) -> str:
     for char in octal:
         decimal <<= 3
         decimal |= int(char)
+
+    if decimal == 0:
+        return "0x0"
 
     hex_char = "0123456789ABCDEF"
 
