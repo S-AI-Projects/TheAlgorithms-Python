@@ -2,8 +2,13 @@
 Fast Polynomial Multiplication using radix-2 fast Fourier Transform.
 """
 
+from collections.abc import Sequence
+from typing import Literal
+
 import mpmath  # for roots of unity
 import numpy as np
+
+type Coefficient = int | float | complex
 
 
 class FFT:
@@ -49,7 +54,11 @@ class FFT:
     A*B = (-0-0j)*x^0 + (2+0j)*x^1 + (3-0j)*x^2 + (8-0j)*x^3 + (6+0j)*x^4 + (8+0j)*x^5
     """
 
-    def __init__(self, poly_a=None, poly_b=None) -> None:
+    def __init__(
+        self,
+        poly_a: Sequence[Coefficient] | None = None,
+        poly_b: Sequence[Coefficient] | None = None,
+    ) -> None:
         # Input as list
         self.polyA = list(poly_a or [0])[:]
         self.polyB = list(poly_b or [0])[:]
@@ -79,7 +88,7 @@ class FFT:
         self.product = self.__multiply()
 
     # Discrete fourier transform of A and B
-    def __dft(self, which):
+    def __dft(self, which: Literal["A", "B"]) -> list[Coefficient]:
         dft = [[x] for x in self.polyA] if which == "A" else [[x] for x in self.polyB]
         # Corner case
         if len(dft) <= 1:
@@ -107,7 +116,7 @@ class FFT:
         return dft[0]
 
     # multiply the DFTs of  A and B and find A*B
-    def __multiply(self):
+    def __multiply(self) -> list[Coefficient]:
         dft_a = self.__dft("A")
         dft_b = self.__dft("B")
         inverce_c = [[dft_a[i] * dft_b[i] for i in range(self.c_max_length)]]

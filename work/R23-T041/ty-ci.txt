@@ -1,0 +1,6 @@
+::warning title=ty (renamed-rule),file=/Users/pruthvirajgojare/Desktop/TheAlgorithms-Python.worktrees/https-github-com-s-ai-projects-thealgorithms-pyt/pyproject.toml,line=319,col=7,endLine=319,endColumn=24::pyproject.toml:319:7: renamed-rule: Rule `call-non-callable` has been renamed to `not-callable`
+::warning title=ty (renamed-rule),file=/Users/pruthvirajgojare/Desktop/TheAlgorithms-Python.worktrees/https-github-com-s-ai-projects-thealgorithms-pyt/pyproject.toml,line=321,col=7,endLine=321,endColumn=26::pyproject.toml:321:7: renamed-rule: Rule `invalid-return-type` has been renamed to `invalid-explicit-return`
+::warning title=ty (renamed-rule),file=/Users/pruthvirajgojare/Desktop/TheAlgorithms-Python.worktrees/https-github-com-s-ai-projects-thealgorithms-pyt/pyproject.toml,line=326,col=7,endLine=326,endColumn=27::pyproject.toml:326:7: renamed-rule: Rule `unresolved-attribute` has been renamed to `missing-attribute`
+::warning title=ty (renamed-rule),file=/Users/pruthvirajgojare/Desktop/TheAlgorithms-Python.worktrees/https-github-com-s-ai-projects-thealgorithms-pyt/pyproject.toml,line=327,col=7,endLine=327,endColumn=24::pyproject.toml:327:7: renamed-rule: Rule `unresolved-import` has been renamed to `import-not-found`
+
+Exit status: 0
