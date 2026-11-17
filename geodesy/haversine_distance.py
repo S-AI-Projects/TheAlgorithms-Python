@@ -18,6 +18,11 @@ def haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> fl
     Earth's ellipsoidal nature are more accurate, but a quick and modifiable
     computation like Haversine can be handy for shorter-range distances.
 
+    Comparison with ellipsoidal models:
+    Compared to geodesy/lamberts_ellipsoidal_distance.py (which models Earth as a
+    WGS-84 oblate ellipsoid with polar flattening of ~1/298.26), the spherical
+    approximation typically has an error of 0.1% to 0.5% depending on latitude.
+
     Args:
         lat1: latitude of coordinate 1 in degrees
         lon1: longitude of coordinate 1 in degrees
@@ -32,6 +37,13 @@ def haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> fl
     >>> YOSEMITE = point_2d(37.864742, -119.537521)
     >>> f"{haversine_distance(*SAN_FRANCISCO, *YOSEMITE):0,.0f} meters"
     '253,748 meters'
+    >>> from geodesy.lamberts_ellipsoidal_distance import lamberts_ellipsoidal_distance
+    >>> diff = abs(
+    ...     haversine_distance(*SAN_FRANCISCO, *YOSEMITE)
+    ...     - lamberts_ellipsoidal_distance(*SAN_FRANCISCO, *YOSEMITE)
+    ... )
+    >>> f"{diff:0,.0f} meters"
+    '283 meters'
     >>> NEW_YORK = point_2d(40.712776, -74.005974)
     >>> LOS_ANGELES = point_2d(34.052235, -118.243683)
     >>> f"{haversine_distance(*NEW_YORK, *LOS_ANGELES):0,.0f} meters"
