@@ -21,6 +21,12 @@ def generate_key(key_size: int) -> tuple[tuple[int, int], tuple[int, int]]:
     (26569, 239)
     >>> private_key
     (26569, 2855)
+    >>> random.seed(42)
+    >>> (n, e), (_, d) = generate_key(16)
+    >>> p = next(i for i in range(2, int(n**0.5) + 1) if n % i == 0)
+    >>> q = n // p
+    >>> (e * d) % ((p - 1) * (q - 1))
+    1
     """
     p = rabin_miller.generate_large_prime(key_size)
     q = rabin_miller.generate_large_prime(key_size)
