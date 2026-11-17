@@ -7,11 +7,20 @@ def is_isogram(string: str) -> bool:
     """
     An isogram is a word in which no letter is repeated.
     Examples of isograms are uncopyrightable and ambidextrously.
+
     >>> is_isogram('Uncopyrightable')
     True
     >>> is_isogram('allowance')
     False
+    >>> is_isogram('Alphabet')
+    False
+    >>> is_isogram('')
+    True
     >>> is_isogram('copy1')
+    Traceback (most recent call last):
+     ...
+    ValueError: String must only contain alphabetic characters.
+    >>> is_isogram('six-year-old')
     Traceback (most recent call last):
      ...
     ValueError: String must only contain alphabetic characters.
@@ -23,7 +32,7 @@ def is_isogram(string: str) -> bool:
     return len(letters) == len(set(letters))
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     input_str = input("Enter a string ").strip()
 
     isogram = is_isogram(input_str)
