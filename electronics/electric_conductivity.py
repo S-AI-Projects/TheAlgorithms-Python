@@ -1,3 +1,14 @@
+"""
+Calculate electrical conductivity, electron concentration, or electron mobility.
+The relationship is σ = n·q·μ, where conductivity σ is measured in siemens
+per meter (S/m), electron concentration n in inverse cubic meters (m⁻³), the
+elementary charge magnitude q in coulombs (C), and mobility μ in square meters
+per volt-second (m²/(V·s)); provide two quantities and use 0 for the one to
+solve for. Reference: https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity
+"""
+# The requested Greek symbols are mathematical notation in this formula.
+# ruff: noqa: RUF002
+
 from __future__ import annotations
 
 ELECTRON_CHARGE = 1.6021e-19  # units = C
