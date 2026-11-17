@@ -30,6 +30,30 @@ class XORCipher:
         # private field
         self.__key = key
 
+    def _normalize_key(self, key: int) -> int:
+        """Helper to validate, default, and wrap key to modulo 256."""
+        assert isinstance(key, int)
+        key = key or self.__key or 1
+        return key % 256
+
+    def _xor_chars(self, content: str, key: int) -> list[str]:
+        """Helper to perform XOR transformation on each character in content."""
+        assert isinstance(content, str)
+        normalized_key = self._normalize_key(key)
+        return [chr(ord(ch) ^ normalized_key) for ch in content]
+
+    def _transform_file(self, in_file: str, out_file: str, key: int) -> bool:
+        """Helper to stream file contents through XOR cipher into an output file."""
+        assert isinstance(in_file, str)
+        assert isinstance(key, int)
+        try:
+            with open(in_file) as fin, open(out_file, "w+") as fout:
+                for line in fin:
+                    fout.write(self.encrypt_string(line, key))
+        except OSError:
+            return False
+        return True
+
     def encrypt(self, content: str, key: int) -> list[str]:
         """
         input: 'content' of type string and 'key' of type int
@@ -53,17 +77,7 @@ class XORCipher:
         >>> XORCipher().encrypt("hallo welt", 256)
         ['h', 'a', 'l', 'l', 'o', ' ', 'w', 'e', 'l', 't']
         """
-
-        # precondition
-        assert isinstance(key, int)
-        assert isinstance(content, str)
-
-        key = key or self.__key or 1
-
-        # make sure key is an appropriate size
-        key %= 256
-
-        return [chr(ord(ch) ^ key) for ch in content]
+        return self._xor_chars(content, key)
 
     def decrypt(self, content: str, key: int) -> list[str]:
         """
@@ -88,17 +102,7 @@ class XORCipher:
         >>> XORCipher().decrypt("hallo welt", 256)
         ['h', 'a', 'l', 'l', 'o', ' ', 'w', 'e', 'l', 't']
         """
-
-        # precondition
-        assert isinstance(key, int)
-        assert isinstance(content, str)
-
-        key = key or self.__key or 1
-
-        # make sure key is an appropriate size
-        key %= 256
-
-        return [chr(ord(ch) ^ key) for ch in content]
+        return self._xor_chars(content, key)
 
     def encrypt_string(self, content: str, key: int = 0) -> str:
         """
@@ -123,23 +127,7 @@ class XORCipher:
         >>> XORCipher().encrypt_string("hallo welt", 256)
         'hallo welt'
         """
-
-        # precondition
-        assert isinstance(key, int)
-        assert isinstance(content, str)
-
-        key = key or self.__key or 1
-
-        # make sure key is an appropriate size
-        key %= 256
-
-        # This will be returned
-        ans = ""
-
-        for ch in content:
-            ans += chr(ord(ch) ^ key)
-
-        return ans
+        return "".join(self._xor_chars(content, key))
 
     def decrypt_string(self, content: str, key: int = 0) -> str:
         """
@@ -164,23 +152,7 @@ class XORCipher:
         >>> XORCipher().decrypt_string("hallo welt", 256)
         'hallo welt'
         """
-
-        # precondition
-        assert isinstance(key, int)
-        assert isinstance(content, str)
-
-        key = key or self.__key or 1
-
-        # make sure key is an appropriate size
-        key %= 256
-
-        # This will be returned
-        ans = ""
-
-        for ch in content:
-            ans += chr(ord(ch) ^ key)
-
-        return ans
+        return "".join(self._xor_chars(content, key))
 
     def encrypt_file(self, file: str, key: int = 0) -> bool:
         """
@@ -190,24 +162,7 @@ class XORCipher:
         if key not passed the method uses the key by the constructor.
         otherwise key = 1
         """
-
-        # precondition
-        assert isinstance(file, str)
-        assert isinstance(key, int)
-
-        # make sure key is an appropriate size
-        key %= 256
-
-        try:
-            with open(file) as fin, open("encrypt.out", "w+") as fout:
-                # actual encrypt-process
-                for line in fin:
-                    fout.write(self.encrypt_string(line, key))
-
-        except OSError:
-            return False
-
-        return True
+        return self._transform_file(file, "encrypt.out", key)
 
     def decrypt_file(self, file: str, key: int) -> bool:
         """
@@ -217,24 +172,7 @@ class XORCipher:
         if key not passed the method uses the key by the constructor.
         otherwise key = 1
         """
-
-        # precondition
-        assert isinstance(file, str)
-        assert isinstance(key, int)
-
-        # make sure key is an appropriate size
-        key %= 256
-
-        try:
-            with open(file) as fin, open("decrypt.out", "w+") as fout:
-                # actual encrypt-process
-                for line in fin:
-                    fout.write(self.decrypt_string(line, key))
-
-        except OSError:
-            return False
-
-        return True
+        return self._transform_file(file, "decrypt.out", key)
 
 
 if __name__ == "__main__":
