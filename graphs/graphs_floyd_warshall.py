@@ -5,7 +5,7 @@ weighted directed graph that can have negative edge weights.
 """
 
 
-def _print_dist(dist, v) -> None:
+def _print_dist(dist: list[list[float]], v: int) -> None:
     print("\nThe shortest path matrix using Floyd Warshall algorithm\n")
     for i in range(v):
         for j in range(v):
@@ -17,7 +17,9 @@ def _print_dist(dist, v) -> None:
         print()
 
 
-def floyd_warshall(graph, v):
+def floyd_warshall(
+    graph: list[list[float]], v: int
+) -> tuple[list[list[float]], int]:
     """
     :param graph: 2D array calculated from weight[edge[i, j]]
     :type graph: List[List[float]]
