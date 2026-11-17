@@ -18,6 +18,20 @@ def abbr(a: str, b: str) -> bool:
     True
     >>> abbr("dBcd", "ABC")
     False
+    >>> abbr("", "")
+    True
+    >>> abbr("", "A")
+    False
+    >>> abbr("a", "")
+    True
+    >>> abbr("abc", "ABC")
+    True
+    >>> abbr("abc", "AC")
+    True
+    >>> abbr("A", "B")
+    False
+    >>> abbr("AB", "A")
+    False
     """
     n = len(a)
     m = len(b)
@@ -33,7 +47,7 @@ def abbr(a: str, b: str) -> bool:
     return dp[n][m]
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     import doctest
 
     doctest.testmod()
