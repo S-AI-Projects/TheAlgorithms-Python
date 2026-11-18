@@ -7,6 +7,22 @@ from sklearn.metrics import ConfusionMatrixDisplay
 from sklearn.model_selection import train_test_split
 
 
+def random_forest_accuracy() -> float:
+    """
+    Train a random forest on the Iris dataset and return its test accuracy.
+
+    >>> random_forest_accuracy() > 0.9
+    True
+    """
+    iris = load_iris()
+    features_train, features_test, targets_train, targets_test = train_test_split(
+        iris["data"], iris["target"], test_size=0.3, random_state=42
+    )
+    classifier = RandomForestClassifier(random_state=42, n_estimators=100)
+    classifier.fit(features_train, targets_train)
+    return classifier.score(features_test, targets_test)
+
+
 def main() -> None:
     """
     Random Forest Classifier Example using sklearn function.
