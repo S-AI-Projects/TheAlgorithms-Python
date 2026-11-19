@@ -15,7 +15,30 @@ def is_int_palindrome(num: int) -> bool:
     True
     >>> is_int_palindrome(120)
     False
+    >>> is_int_palindrome(7)
+    True
+    >>> is_int_palindrome(1210)
+    False
+    >>> is_int_palindrome(1234567890987654321)
+    True
+    >>> is_int_palindrome(12345678909876543210)
+    False
+    >>> is_int_palindrome("121")
+    Traceback (most recent call last):
+        ...
+    TypeError: Input must be an integer
+    >>> is_int_palindrome(12.21)
+    Traceback (most recent call last):
+        ...
+    TypeError: Input must be an integer
+    >>> is_int_palindrome(True)
+    Traceback (most recent call last):
+        ...
+    TypeError: Input must be an integer
     """
+    if not isinstance(num, int) or isinstance(num, bool):
+        raise TypeError("Input must be an integer")
+
     if num < 0:
         return False
 
