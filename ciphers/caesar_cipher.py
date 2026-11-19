@@ -19,13 +19,19 @@ def encrypt(input_string: str, key: int, alphabet: str | None = None) -> str:
 
     Optional:
 
-    *   `alphabet` (``None``): the alphabet used to encode the cipher, if not
-        specified, the standard english alphabet with upper and lowercase
-        letters is used
+    *   `alphabet` (``None``): the alphabet used to encode the cipher; if not
+        specified or empty, the standard english alphabet with upper and lowercase
+        letters (`ascii_letters`) is used as fallback. Must contain unique characters.
 
     Returns:
 
     *   A string containing the encoded cipher-text
+
+    Raises:
+
+    *   `TypeError`: if `input_string` is not a string, `key` is not an integer,
+        or `alphabet` is not a string or None.
+    *   `ValueError`: if `alphabet` contains duplicate characters.
 
     More on the caesar cipher
     =========================
@@ -67,7 +73,48 @@ def encrypt(input_string: str, key: int, alphabet: str | None = None) -> str:
 
     >>> encrypt('a lowercase alphabet', 5, 'abcdefghijklmnopqrstuvwxyz')
     'f qtbjwhfxj fqumfgjy'
+
+    >>> encrypt('hello', -5)
+    'cZggj'
+
+    >>> encrypt('hello', 5, '')
+    'mjqqt'
+
+    >>> encrypt(123, 5)
+    Traceback (most recent call last):
+        ...
+    TypeError: input_string must be a string
+
+    >>> encrypt('hello', 5.5)
+    Traceback (most recent call last):
+        ...
+    TypeError: key must be an integer
+
+    >>> encrypt('hello', True)
+    Traceback (most recent call last):
+        ...
+    TypeError: key must be an integer
+
+    >>> encrypt('hello', 5, 123)
+    Traceback (most recent call last):
+        ...
+    TypeError: alphabet must be a string or None
+
+    >>> encrypt('hello', 5, 'abcabc')
+    Traceback (most recent call last):
+        ...
+    ValueError: alphabet must contain unique characters
     """
+    if not isinstance(input_string, str):
+        raise TypeError("input_string must be a string")
+    if not isinstance(key, int) or isinstance(key, bool):
+        raise TypeError("key must be an integer")
+    if alphabet is not None:
+        if not isinstance(alphabet, str):
+            raise TypeError("alphabet must be a string or None")
+        if len(set(alphabet)) != len(alphabet):
+            raise ValueError("alphabet must contain unique characters")
+
     # Set default alphabet to lower and upper case english chars
     alpha = alphabet or ascii_letters
 
@@ -103,13 +150,19 @@ def decrypt(input_string: str, key: int, alphabet: str | None = None) -> str:
 
     Optional:
 
-    *   `alphabet` (``None``): the alphabet used to decode the cipher, if not
-        specified, the standard english alphabet with upper and lowercase
-        letters is used
+    *   `alphabet` (``None``): the alphabet used to decode the cipher; if not
+        specified or empty, the standard english alphabet with upper and lowercase
+        letters (`ascii_letters`) is used as fallback. Must contain unique characters.
 
     Returns:
 
     *   A string containing the decoded plain-text
+
+    Raises:
+
+    *   `TypeError`: if `input_string` is not a string, `key` is not an integer,
+        or `alphabet` is not a string or None.
+    *   `ValueError`: if `alphabet` contains duplicate characters.
 
     More on the caesar cipher
     =========================
@@ -153,7 +206,35 @@ def decrypt(input_string: str, key: int, alphabet: str | None = None) -> str:
 
     >>> decrypt('f qtbjwhfxj fqumfgjy', 5, 'abcdefghijklmnopqrstuvwxyz')
     'a lowercase alphabet'
+
+    >>> decrypt('mjqqt', 5, '')
+    'hello'
+
+    >>> decrypt(123, 5)
+    Traceback (most recent call last):
+        ...
+    TypeError: input_string must be a string
+
+    >>> decrypt('hello', 5.5)
+    Traceback (most recent call last):
+        ...
+    TypeError: key must be an integer
+
+    >>> decrypt('hello', 5, 'aba')
+    Traceback (most recent call last):
+        ...
+    ValueError: alphabet must contain unique characters
     """
+    if not isinstance(input_string, str):
+        raise TypeError("input_string must be a string")
+    if not isinstance(key, int) or isinstance(key, bool):
+        raise TypeError("key must be an integer")
+    if alphabet is not None:
+        if not isinstance(alphabet, str):
+            raise TypeError("alphabet must be a string or None")
+        if len(set(alphabet)) != len(alphabet):
+            raise ValueError("alphabet must contain unique characters")
+
     # Turn on decode mode by making the key negative
     key *= -1
 
@@ -209,6 +290,8 @@ def brute_force(input_string: str, alphabet: str | None = None) -> dict[int, str
     Traceback (most recent call last):
     TypeError: 'int' object is not iterable
     """
+    for _ in input_string:
+        break
     # Set default alphabet to lower and upper case english chars
     alpha = alphabet or ascii_letters
 
