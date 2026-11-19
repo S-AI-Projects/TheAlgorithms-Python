@@ -90,6 +90,14 @@ def kth_largest_element(arr: list[int], position: int) -> int:
         Traceback (most recent call last):
         ...
         TypeError: 'tuple' object does not support item assignment
+        >>> kth_largest_element([7, 7, 7, 7], 2)
+        7
+        >>> kth_largest_element([42], 1)
+        42
+        >>> kth_largest_element([1, 2, 3], 4)
+        Traceback (most recent call last):
+        ...
+        ValueError: Invalid value of 'position'
     """
     if not arr:
         return -1
