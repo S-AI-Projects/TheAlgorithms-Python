@@ -10,28 +10,76 @@ import math
 def default_matrix_multiplication(a: list, b: list) -> list:
     """
     Multiplication only for 2x2 matrices
+
+    >>> default_matrix_multiplication([[1, 2], [3, 4]], [[5, 6], [7, 8]])
+    [[19, 22], [43, 50]]
+    >>> default_matrix_multiplication([[0, 0], [0, 0]], [[1, 2], [3, 4]])
+    [[0, 0], [0, 0]]
+    >>> default_matrix_multiplication([[1, 2]], [[3, 4]])
+    Traceback (most recent call last):
+        ...
+    Exception: Matrices are not 2x2
     """
     if len(a) != 2 or len(a[0]) != 2 or len(b) != 2 or len(b[0]) != 2:
         raise Exception("Matrices are not 2x2")
-    new_matrix = [
+    return [
         [a[0][0] * b[0][0] + a[0][1] * b[1][0], a[0][0] * b[0][1] + a[0][1] * b[1][1]],
         [a[1][0] * b[0][0] + a[1][1] * b[1][0], a[1][0] * b[0][1] + a[1][1] * b[1][1]],
     ]
-    return new_matrix
 
 
-def matrix_addition(matrix_a: list, matrix_b: list):
+def matrix_addition(matrix_a: list, matrix_b: list) -> list:
+    """
+    Element-wise addition of two matrices of the same shape.
+
+    >>> matrix_addition([[1, 2], [3, 4]], [[5, 6], [7, 8]])
+    [[6, 8], [10, 12]]
+    >>> matrix_addition([[5]], [[3]])
+    [[8]]
+    >>> matrix_addition([[1, 2]], [[1]])
+    Traceback (most recent call last):
+        ...
+    IndexError: list index out of range
+    """
     return [
         [matrix_a[row][col] + matrix_b[row][col] for col in range(len(matrix_a[row]))]
         for row in range(len(matrix_a))
     ]
 
 
-def matrix_subtraction(matrix_a: list, matrix_b: list):
+def matrix_subtraction(matrix_a: list, matrix_b: list) -> list:
+    """
+    Element-wise subtraction of two matrices of the same shape.
+
+    >>> matrix_subtraction([[5, 6], [7, 8]], [[1, 2], [3, 4]])
+    [[4, 4], [4, 4]]
+    >>> matrix_subtraction([[10]], [[3]])
+    [[7]]
+    >>> matrix_subtraction([[1, 2]], [[1]])
+    Traceback (most recent call last):
+        ...
+    IndexError: list index out of range
+    """
     return [
         [matrix_a[row][col] - matrix_b[row][col] for col in range(len(matrix_a[row]))]
         for row in range(len(matrix_a))
     ]
+
+
+def extract_submatrix(matrix: list, rows: range, cols: range) -> list:
+    """
+    Extract a submatrix from matrix given row and column index ranges.
+
+    >>> extract_submatrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], range(0, 2), range(1, 3))
+    [[2, 3], [5, 6]]
+    >>> extract_submatrix([[1, 2], [3, 4]], range(1, 2), range(0, 1))
+    [[3]]
+    >>> extract_submatrix([[1, 2]], range(0, 2), range(0, 2))
+    Traceback (most recent call last):
+        ...
+    IndexError: list index out of range
+    """
+    return [[matrix[i][j] for j in cols] for i in rows]
 
 
 def split_matrix(a: list) -> tuple[list, list, list, list]:
@@ -49,12 +97,13 @@ def split_matrix(a: list) -> tuple[list, list, list, list]:
       [2, 3, 1, 1], [6, 5, 4, 3], [8, 4, 1, 6]], [[4, 3, 2, 4], [2, 3, 1, 1],
       [6, 5, 4, 3], [8, 4, 1, 6]], [[4, 3, 2, 4], [2, 3, 1, 1], [6, 5, 4, 3],
       [8, 4, 1, 6]])
+    >>> split_matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+    Traceback (most recent call last):
+        ...
+    Exception: Odd matrices are not supported!
     """
     if len(a) % 2 != 0 or len(a[0]) % 2 != 0:
         raise Exception("Odd matrices are not supported!")
-
-    def extract_submatrix(rows, cols):
-        return [[a[i][j] for j in cols] for i in rows]
 
     mid = len(a) // 2
 
@@ -62,18 +111,43 @@ def split_matrix(a: list) -> tuple[list, list, list, list]:
     cols_left, cols_right = range(mid), range(mid, len(a))
 
     return (
-        extract_submatrix(rows_top, cols_left),  # Top-left
-        extract_submatrix(rows_top, cols_right),  # Top-right
-        extract_submatrix(rows_bot, cols_left),  # Bottom-left
-        extract_submatrix(rows_bot, cols_right),  # Bottom-right
+        extract_submatrix(a, rows_top, cols_left),  # Top-left
+        extract_submatrix(a, rows_top, cols_right),  # Top-right
+        extract_submatrix(a, rows_bot, cols_left),  # Bottom-left
+        extract_submatrix(a, rows_bot, cols_right),  # Bottom-right
     )
 
 
 def matrix_dimensions(matrix: list) -> tuple[int, int]:
+    """
+    Return the dimensions (rows, columns) of a 2D matrix.
+
+    >>> matrix_dimensions([[1, 2], [3, 4]])
+    (2, 2)
+    >>> matrix_dimensions([[1, 2, 3], [4, 5, 6]])
+    (2, 3)
+    >>> matrix_dimensions([])
+    Traceback (most recent call last):
+        ...
+    IndexError: list index out of range
+    """
     return len(matrix), len(matrix[0])
 
 
 def print_matrix(matrix: list) -> None:
+    """
+    Print each row of the matrix on a new line.
+
+    >>> print_matrix([[1, 2], [3, 4]])
+    [1, 2]
+    [3, 4]
+    >>> print_matrix([[42]])
+    [42]
+    >>> print_matrix(123)  # type: ignore[arg-type]
+    Traceback (most recent call last):
+        ...
+    TypeError: 'int' object is not iterable
+    """
     print("\n".join(str(line) for line in matrix))
 
 
@@ -110,6 +184,31 @@ def actual_strassen(matrix_a: list, matrix_b: list) -> list:
     the standard/naive matrix multiplication algorithm.
     Space complexity: O(n^2) for storing the intermediate quadrant matrices, plus
     O(log n) recursion stack depth.
+
+    Examples:
+        >>> actual_strassen([[1, 2], [3, 4]], [[5, 6], [7, 8]])
+        [[19, 22], [43, 50]]
+        >>> a = [
+        ...     [1, 2, 3, 4],
+        ...     [5, 6, 7, 8],
+        ...     [9, 1, 2, 3],
+        ...     [4, 5, 6, 7],
+        ... ]
+        >>> b = [
+        ...     [7, 6, 5, 4],
+        ...     [3, 2, 1, 9],
+        ...     [8, 7, 6, 5],
+        ...     [4, 3, 2, 1],
+        ... ]
+        >>> actual_strassen(a, b)
+        [[53, 43, 33, 41], [141, 115, 89, 117], [94, 79, 64, 58], [119, 97, 75, 98]]
+        >>> actual_strassen(
+        ...     [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
+        ...     [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
+        ... )
+        Traceback (most recent call last):
+            ...
+        Exception: Odd matrices are not supported!
     """
     if matrix_dimensions(matrix_a) == (2, 2):
         return default_matrix_multiplication(matrix_a, matrix_b)
@@ -163,6 +262,16 @@ def strassen(matrix1: list, matrix2: list) -> list:
     [[34, 23, 19, 15], [68, 46, 37, 28], [28, 18, 15, 12], [96, 62, 55, 48]]
     >>> strassen([[3,7,5,6,9],[1,5,3,7,8],[1,4,4,5,7]], [[2,4],[5,2],[1,7],[5,5],[7,8]])
     [[139, 163], [121, 134], [100, 121]]
+    >>> strassen([[1, 2, 3], [4, 5, 6], [7, 8, 9]], [[1, 2], [3, 4], [5, 6]])
+    [[22, 28], [49, 64], [76, 100]]
+    >>> strassen([[1, 2], [3, 4]], [[5, 6], [7, 8]])
+    [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
+    >>> strassen([[1, 2]], [[3, 4]])
+    Traceback (most recent call last):
+        ...
+    Exception: Unable to multiply these matrices, please check the dimensions.
+    Matrix A: [[1, 2]]
+    Matrix B: [[3, 4]]
     """
     if matrix_dimensions(matrix1)[1] != matrix_dimensions(matrix2)[0]:
         msg = (
