@@ -118,6 +118,15 @@ def merge_sort_linked_list(head: Node | None) -> Node | None:
     """
     Sort a linked list using the Merge Sort algorithm.
 
+    Complexity:
+        Time: O(n log n) in all cases (best, average, worst).
+            The linked list is divided in half at each step in O(n) using the
+            slow/fast pointer technique across O(log n) division levels.
+            Merging two sorted sublists takes O(n) total work per level.
+        Space: O(log n) auxiliary call stack space due to recursion
+            (with O(n) auxiliary stack space during the recursive merge step).
+            Node links are rearranged in place without allocating new node objects.
+
     Parameters:
         head: The head node of the linked list to be sorted.
 
@@ -133,6 +142,14 @@ def merge_sort_linked_list(head: Node | None) -> Node | None:
     (4, 2, 1, 3)
     >>> sorted_head = merge_sort_linked_list(head)
     >>> tuple(iter_linked_list(sorted_head))
+    (1, 2, 3, 4)
+    >>> merge_sort_linked_list(None) is None
+    True
+    >>> single = Node(42)
+    >>> tuple(iter_linked_list(merge_sort_linked_list(single)))
+    (42,)
+    >>> already_sorted = Node(1, Node(2, Node(3, Node(4))))
+    >>> tuple(iter_linked_list(merge_sort_linked_list(already_sorted)))
     (1, 2, 3, 4)
     """
 
