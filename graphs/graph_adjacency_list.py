@@ -81,6 +81,23 @@ class GraphAdjacencyList[T]:
         Creates an edge from source vertex to destination vertex. If any
         given vertex doesn't exist or the edge already exists, a ValueError
         will be thrown.
+
+        >>> g_directed = GraphAdjacencyList(
+        ...     vertices=["A", "B"], edges=[], directed=True
+        ... )
+        >>> g_directed.add_edge("A", "B")
+        >>> g_directed.adj_list
+        {'A': ['B'], 'B': []}
+        >>> g_directed.add_edge("A", "B")
+        Traceback (most recent call last):
+        ...
+        ValueError: Incorrect input: The edge already exists between A and B
+        >>> g_undirected = GraphAdjacencyList(
+        ...     vertices=["A", "B"], edges=[], directed=False
+        ... )
+        >>> g_undirected.add_edge("A", "B")
+        >>> g_undirected.adj_list
+        {'A': ['B'], 'B': ['A']}
         """
         if not (
             self.contains_vertex(source_vertex)
@@ -109,6 +126,23 @@ class GraphAdjacencyList[T]:
         Removes the given vertex from the graph and deletes all incoming and
         outgoing edges from the given vertex as well. If the given vertex
         does not exist, a ValueError will be thrown.
+
+        >>> g_directed = GraphAdjacencyList(
+        ...     vertices=["A", "B"], edges=[["A", "B"]], directed=True
+        ... )
+        >>> g_directed.remove_vertex("B")
+        >>> g_directed.adj_list
+        {'A': []}
+        >>> g_undirected = GraphAdjacencyList(
+        ...     vertices=["A", "B"], edges=[["A", "B"]], directed=False
+        ... )
+        >>> g_undirected.remove_vertex("A")
+        >>> g_undirected.adj_list
+        {'B': []}
+        >>> g_undirected.remove_vertex("Z")
+        Traceback (most recent call last):
+        ...
+        ValueError: Incorrect input: Z does not exist in this graph.
         """
         if not self.contains_vertex(vertex):
             msg = f"Incorrect input: {vertex} does not exist in this graph."
@@ -133,6 +167,23 @@ class GraphAdjacencyList[T]:
         """
         Removes the edge between the two vertices. If any given vertex
         doesn't exist or the edge does not exist, a ValueError will be thrown.
+
+        >>> g_directed = GraphAdjacencyList(
+        ...     vertices=["A", "B"], edges=[["A", "B"]], directed=True
+        ... )
+        >>> g_directed.remove_edge("A", "B")
+        >>> g_directed.adj_list
+        {'A': [], 'B': []}
+        >>> g_undirected = GraphAdjacencyList(
+        ...     vertices=["A", "B"], edges=[["A", "B"]], directed=False
+        ... )
+        >>> g_undirected.remove_edge("A", "B")
+        >>> g_undirected.adj_list
+        {'A': [], 'B': []}
+        >>> g_directed.remove_edge("A", "B")
+        Traceback (most recent call last):
+        ...
+        ValueError: Incorrect input: The edge does NOT exist between A and B
         """
         if not (
             self.contains_vertex(source_vertex)
@@ -159,6 +210,12 @@ class GraphAdjacencyList[T]:
     def contains_vertex(self, vertex: T) -> bool:
         """
         Returns True if the graph contains the vertex, False otherwise.
+
+        >>> g = GraphAdjacencyList(vertices=["A"], edges=[], directed=True)
+        >>> g.contains_vertex("A")
+        True
+        >>> g.contains_vertex("B")
+        False
         """
         return vertex in self.adj_list
 
@@ -167,6 +224,23 @@ class GraphAdjacencyList[T]:
         Returns True if the graph contains the edge from the source_vertex to the
         destination_vertex, False otherwise. If any given vertex doesn't exist, a
         ValueError will be thrown.
+
+        >>> g_directed = GraphAdjacencyList(
+        ...     vertices=["A", "B"], edges=[["A", "B"]], directed=True
+        ... )
+        >>> g_directed.contains_edge("A", "B")
+        True
+        >>> g_directed.contains_edge("B", "A")
+        False
+        >>> g_undirected = GraphAdjacencyList(
+        ...     vertices=["A", "B"], edges=[["A", "B"]], directed=False
+        ... )
+        >>> g_undirected.contains_edge("B", "A")
+        True
+        >>> g_directed.contains_edge("A", "C")
+        Traceback (most recent call last):
+        ...
+        ValueError: Incorrect input: Either A or C does not exist.
         """
         if not (
             self.contains_vertex(source_vertex)
@@ -183,6 +257,13 @@ class GraphAdjacencyList[T]:
     def clear_graph(self) -> None:
         """
         Clears all vertices and edges.
+
+        >>> g = GraphAdjacencyList(
+        ...     vertices=["A", "B"], edges=[["A", "B"]], directed=True
+        ... )
+        >>> g.clear_graph()
+        >>> g.adj_list
+        {}
         """
         self.adj_list = {}
 
