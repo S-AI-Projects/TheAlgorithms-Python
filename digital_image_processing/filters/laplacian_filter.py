@@ -27,6 +27,20 @@ def my_laplacian(src: np.ndarray, ksize: int) -> np.ndarray:
     Traceback (most recent call last):
         ...
     ValueError: ksize must be in (1, 3, 5, 7)
+
+    The supported kernel sizes process a small grayscale array without an
+    image file. The 5x5 and 7x7 kernels also work with an image smaller than
+    the kernel, using OpenCV's default border handling.
+
+    >>> image = np.array([[0, 0, 0], [0, 1, 0], [0, 0, 0]], dtype=np.uint8)
+    >>> my_laplacian(image, 1).tolist()
+    [[4.0, -2.0, 4.0], [-2.0, 0.0, -2.0], [4.0, -2.0, 4.0]]
+    >>> my_laplacian(image, 3).tolist()
+    [[-4.0, 2.0, -4.0], [2.0, 0.0, 2.0], [-4.0, 2.0, -4.0]]
+    >>> my_laplacian(image, 5).tolist()
+    [[-4.0, -4.0, -4.0], [-4.0, 12.0, -4.0], [-4.0, -4.0, -4.0]]
+    >>> my_laplacian(image, 7).tolist()
+    [[56.0, -30.0, 56.0], [-30.0, -28.0, -30.0], [56.0, -30.0, 56.0]]
     """
     kernels = {
         1: np.array([[0, -1, 0], [-1, 4, -1], [0, -1, 0]]),
