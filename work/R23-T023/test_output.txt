@@ -1,0 +1,164 @@
+=== 1. Doctest Conversions/hex_to_rgb.py ===
+Trying:
+    hex_to_rgb("#FF0000")
+Expecting:
+    'rgb(255, 0, 0)'
+ok
+Trying:
+    hex_to_rgb("#00FF00")
+Expecting:
+    'rgb(0, 255, 0)'
+ok
+Trying:
+    hex_to_rgb("#123")
+Expecting:
+    'rgb(17, 34, 51)'
+ok
+Trying:
+    hex_to_rgb("#000000")
+Expecting:
+    'rgb(0, 0, 0)'
+ok
+Trying:
+    hex_to_rgb("#FFFFFF")
+Expecting:
+    'rgb(255, 255, 255)'
+ok
+Trying:
+    hex_to_rgb("#0088FF")
+Expecting:
+    'rgb(0, 136, 255)'
+ok
+Trying:
+    hex_to_rgb("#0032ccAA")
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: Invalid hex color code
+ok
+Trying:
+    hex_to_rgb("#0032")
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: Invalid hex color code
+ok
+Trying:
+    hex_to_rgb("#abc")
+Expecting:
+    'rgb(170, 187, 204)'
+ok
+Trying:
+    hex_to_rgb("#ff2000")
+Expecting:
+    'rgb(255, 32, 0)'
+ok
+Trying:
+    hex_to_rgb("FF0000")
+Expecting:
+    'rgb(255, 0, 0)'
+ok
+Trying:
+    hex_to_rgb("123")
+Expecting:
+    'rgb(17, 34, 51)'
+ok
+Trying:
+    hex_to_rgb("#12345")
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: Invalid hex color code
+ok
+Trying:
+    hex_to_rgb("")
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: Invalid hex color code
+ok
+1 item had no tests:
+    hex_to_rgb
+1 item passed all tests:
+  14 tests in hex_to_rgb.hex_to_rgb
+14 tests in 2 items.
+14 passed.
+Test passed.
+
+=== 2. Hypothesis Property Tests ===
+============================= test session starts ==============================
+platform darwin -- Python 3.15.2, pytest-9.1.1, pluggy-1.6.0 -- /Users/md.sohail/.cache/uv/builds-v0/.tmpMWiK8m/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /Users/md.sohail/Documents/snai/TheAlgorithms-Python
+configfile: pyproject.toml
+plugins: hypothesis-6.170.17, anyio-4.15.1
+collecting ... collected 7 items
+
+work/R23-T023/test_hex_to_rgb_properties.py::test_hex_to_rgb_round_trip PASSED [ 14%]
+work/R23-T023/test_hex_to_rgb_properties.py::test_hex_3digit_expansion_round_trip PASSED [ 28%]
+work/R23-T023/test_hex_to_rgb_properties.py::test_case_and_prefix_invariance PASSED [ 42%]
+work/R23-T023/test_hex_to_rgb_properties.py::test_invalid_length_raises_value_error PASSED [ 57%]
+work/R23-T023/test_hex_to_rgb_properties.py::test_non_hex_characters_raise_value_error PASSED [ 71%]
+work/R23-T023/test_hex_to_rgb_properties.py::test_arbitrary_invalid_strings_raise_value_error PASSED [ 85%]
+work/R23-T023/test_hex_to_rgb_properties.py::test_hypothesis_discovered_limitation_minimal_example PASSED [100%]
+
+============================= slowest 10 durations =============================
+0.58s call     work/R23-T023/test_hex_to_rgb_properties.py::test_hex_to_rgb_round_trip
+0.24s call     work/R23-T023/test_hex_to_rgb_properties.py::test_hex_3digit_expansion_round_trip
+0.21s call     work/R23-T023/test_hex_to_rgb_properties.py::test_non_hex_characters_raise_value_error
+0.20s call     work/R23-T023/test_hex_to_rgb_properties.py::test_arbitrary_invalid_strings_raise_value_error
+0.19s call     work/R23-T023/test_hex_to_rgb_properties.py::test_invalid_length_raises_value_error
+0.18s call     work/R23-T023/test_hex_to_rgb_properties.py::test_case_and_prefix_invariance
+
+(4 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================== 7 passed in 1.69s ===============================
+
+=== 3. Pytest Doctest Modules ===
+============================= test session starts ==============================
+platform darwin -- Python 3.15.2, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/md.sohail/Documents/snai/TheAlgorithms-Python
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collected 1 item
+
+conversions/hex_to_rgb.py .                                              [100%]
+
+============================= slowest 10 durations =============================
+0.01s call     conversions/hex_to_rgb.py::conversions.hex_to_rgb.hex_to_rgb
+
+(2 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================== 1 passed in 0.02s ===============================
+
+=== 4. Ruff Check ===
+All checks passed!
+
+=== 5. Ruff Format Check ===
+2 files already formatted
+
+=== 6. Type Check (ty check) ===
+warning[renamed-rule]: Rule `call-non-callable` has been renamed to `not-callable`
+   --> pyproject.toml:319:7
+    |
+319 | rules.call-non-callable = "ignore"
+    |       ^^^^^^^^^^^^^^^^^
+
+warning[renamed-rule]: Rule `invalid-return-type` has been renamed to `invalid-explicit-return`
+   --> pyproject.toml:321:7
+    |
+321 | rules.invalid-return-type = "ignore"
+    |       ^^^^^^^^^^^^^^^^^^^
+
+warning[renamed-rule]: Rule `unresolved-attribute` has been renamed to `missing-attribute`
+   --> pyproject.toml:326:7
+    |
+326 | rules.unresolved-attribute = "ignore"
+    |       ^^^^^^^^^^^^^^^^^^^^
+
+warning[renamed-rule]: Rule `unresolved-import` has been renamed to `import-not-found`
+   --> pyproject.toml:327:7
+    |
+327 | rules.unresolved-import = "ignore"
+    |       ^^^^^^^^^^^^^^^^^
+
+Found 4 diagnostics
