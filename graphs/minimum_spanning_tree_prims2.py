@@ -44,7 +44,7 @@ def get_child_right_position(position: int) -> int:
     >>> get_child_right_position(0)
     2
     """
-    return (2 * position) + 2
+    return get_child_left_position(position) + 1
 
 
 class MinPriorityQueue[T]:
@@ -152,23 +152,16 @@ class MinPriorityQueue[T]:
         _, weight = self.heap[curr_pos]
         child_left_position = get_child_left_position(curr_pos)
         child_right_position = get_child_right_position(curr_pos)
-        if child_left_position < self.elements and child_right_position < self.elements:
-            _, child_left_weight = self.heap[child_left_position]
-            _, child_right_weight = self.heap[child_right_position]
-            if child_right_weight < child_left_weight and child_right_weight < weight:
-                self._swap_nodes(child_right_position, curr_pos)
-                return self._bubble_down(elem)
         if child_left_position < self.elements:
-            _, child_left_weight = self.heap[child_left_position]
-            if child_left_weight < weight:
-                self._swap_nodes(child_left_position, curr_pos)
-                return self._bubble_down(elem)
-        else:
-            return None
-        if child_right_position < self.elements:
-            _, child_right_weight = self.heap[child_right_position]
-            if child_right_weight < weight:
-                self._swap_nodes(child_right_position, curr_pos)
+            child_position = child_left_position
+            if (
+                child_right_position < self.elements
+                and self.heap[child_right_position][1]
+                < self.heap[child_left_position][1]
+            ):
+                child_position = child_right_position
+            if self.heap[child_position][1] < weight:
+                self._swap_nodes(child_position, curr_pos)
                 return self._bubble_down(elem)
         return None
 
