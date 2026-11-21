@@ -51,8 +51,32 @@ def hex_to_rgb(hex_color: str) -> str:
     ...
     ValueError: Invalid hex color code
 
+    >>> hex_to_rgb("#abc")
+    'rgb(170, 187, 204)'
+
+    >>> hex_to_rgb("#ff2000")
+    'rgb(255, 32, 0)'
+
+    >>> hex_to_rgb("FF0000")
+    'rgb(255, 0, 0)'
+
+    >>> hex_to_rgb("123")
+    'rgb(17, 34, 51)'
+
+    >>> hex_to_rgb("#12345")
+    Traceback (most recent call last):
+    ...
+    ValueError: Invalid hex color code
+
+    >>> hex_to_rgb("")
+    Traceback (most recent call last):
+    ...
+    ValueError: Invalid hex color code
+
     Note:
         - The function supports both 6-digit and 3-digit hex color codes.
+        - Supports both uppercase and lowercase hexadecimal characters.
+        - The leading '#' prefix is optional.
     """
 
     hex_color = hex_color.lstrip("#")
