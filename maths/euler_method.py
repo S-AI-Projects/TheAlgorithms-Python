@@ -8,6 +8,11 @@ def explicit_euler(
 ) -> np.ndarray:
     """Calculate numeric solution at each step to an ODE using Euler's Method
 
+    For dy/dx = y with y(0) = 1 on [0, 1], the global error is O(h).
+    The modified Euler method has error O(h**2), while classical Runge-Kutta
+    has error O(h**4). Halving the step size therefore reduces the errors by
+    approximately 1/2, 1/4, and 1/16, respectively.
+
     For reference to Euler's method refer to https://en.wikipedia.org/wiki/Euler_method.
 
     Args:
@@ -28,6 +33,20 @@ def explicit_euler(
     >>> y = explicit_euler(f, y0, 0.0, 0.01, 5)
     >>> float(y[-1])
     144.77277243257308
+
+    Compare the error ratios for halved step sizes:
+
+    >>> import math
+    >>> from maths.euler_modified import euler_modified
+    >>> from maths.numerical_analysis.runge_kutta import runge_kutta
+    >>> def error(method, h):
+    ...     return abs(float(method(f, 1, 0, h, 1)[-1]) - math.e)
+    >>> round(error(explicit_euler, 0.05) / error(explicit_euler, 0.1), 2)
+    0.52
+    >>> round(error(euler_modified, 0.05) / error(euler_modified, 0.1), 2)
+    0.26
+    >>> round(error(runge_kutta, 0.05) / error(runge_kutta, 0.1), 2)
+    0.07
     """
     n = int(np.ceil((x_end - x0) / step_size))
     y = np.zeros((n + 1,))
