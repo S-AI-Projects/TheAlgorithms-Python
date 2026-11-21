@@ -58,6 +58,34 @@ def main(
     Traceback (most recent call last):
       ...
     IndexError: list assignment index out of range
+
+    A seeded generation on four square cities makes the intermediate steps
+    reproducible:
+
+    >>> import random
+    >>> small_cities = {0: [0, 0], 1: [1, 0], 2: [1, 1], 3: [0, 1]}
+    >>> random.seed(23)
+    >>> population, cities_list = init(small_cities, 4)
+    >>> fitness_values, best_path, best_distance = fitness(
+    ...     small_cities, population, [], float("inf")
+    ... )
+    >>> [round(value, 4) for value in fitness_values]
+    [0.2071, 0.25, 0.2071, 0.2071]
+    >>> best_path, best_distance
+    ([0, 3, 2, 1, 0], 4.0)
+    >>> random.seed(23)
+    >>> population = chose_rws(fitness_values, population, 4)
+    >>> population
+    [[0, 3, 1, 2, 0], [0, 3, 1, 2, 0], [0, 3, 1, 2, 0], [0, 2, 1, 3, 0]]
+    >>> for index in range(2):
+    ...     population[index], population[index + 2] = crossing(
+    ...         population[index], population[index + 2], 1.0, cities_list
+    ...     )
+    >>> population
+    [[0, 3, 1, 2, 0], [0, 2, 1, 3, 0], [0, 3, 1, 2, 0], [0, 3, 1, 2, 0]]
+    >>> population = [mutate(chromosome, 1.0) for chromosome in population]
+    >>> population
+    [[0, 3, 2, 1, 0], [0, 2, 1, 3, 0], [0, 3, 1, 2, 0], [0, 3, 1, 2, 0]]
     """
     best_path: list[int] = []
     best_distance = float("inf")
