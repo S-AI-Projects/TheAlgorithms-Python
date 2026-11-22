@@ -1,0 +1,110 @@
+=== 1. Doctest maths/base_neg2_conversion.py ===
+Trying:
+    decimal_to_negative_base_2(0)
+Expecting:
+    0
+ok
+Trying:
+    decimal_to_negative_base_2(-19)
+Expecting:
+    111101
+ok
+Trying:
+    decimal_to_negative_base_2(4)
+Expecting:
+    100
+ok
+Trying:
+    decimal_to_negative_base_2(7)
+Expecting:
+    11011
+ok
+Trying:
+    decimal_to_negative_base_2(3.5)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: num must be an integer, not float
+ok
+Trying:
+    decimal_to_negative_base_2(True)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: num must be an integer, not bool
+ok
+Trying:
+    decimal_to_negative_base_2("10")
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: num must be an integer, not str
+ok
+Trying:
+    decimal_to_negative_base_2(None)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: num must be an integer, not NoneType
+ok
+Trying:
+    decimal_to_negative_base_2(10**18)
+Expecting:
+    1001000100001110010111111010011111000101001000000000000000000
+ok
+1 item had no tests:
+    base_neg2_conversion
+1 item passed all tests:
+   9 tests in base_neg2_conversion.decimal_to_negative_base_2
+9 tests in 2 items.
+9 passed.
+Test passed.
+
+=== 2. Pytest Doctest Modules ===
+============================= test session starts ==============================
+platform darwin -- Python 3.15.2, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/md.sohail/Documents/snai/TheAlgorithms-Python
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collected 1 item
+
+maths/base_neg2_conversion.py .                                          [100%]
+
+============================= slowest 10 durations =============================
+0.01s call     maths/base_neg2_conversion.py::maths.base_neg2_conversion.decimal_to_negative_base_2
+
+(2 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================== 1 passed in 0.03s ===============================
+
+=== 3. Ruff Check ===
+All checks passed!
+
+=== 4. Ruff Format Check ===
+2 files already formatted
+
+=== 5. Type Check (ty check) ===
+warning[renamed-rule]: Rule `call-non-callable` has been renamed to `not-callable`
+   --> pyproject.toml:319:7
+    |
+319 | rules.call-non-callable = "ignore"
+    |       ^^^^^^^^^^^^^^^^^
+
+warning[renamed-rule]: Rule `invalid-return-type` has been renamed to `invalid-explicit-return`
+   --> pyproject.toml:321:7
+    |
+321 | rules.invalid-return-type = "ignore"
+    |       ^^^^^^^^^^^^^^^^^^^
+
+warning[renamed-rule]: Rule `unresolved-attribute` has been renamed to `missing-attribute`
+   --> pyproject.toml:326:7
+    |
+326 | rules.unresolved-attribute = "ignore"
+    |       ^^^^^^^^^^^^^^^^^^^^
+
+warning[renamed-rule]: Rule `unresolved-import` has been renamed to `import-not-found`
+   --> pyproject.toml:327:7
+    |
+327 | rules.unresolved-import = "ignore"
+    |       ^^^^^^^^^^^^^^^^^
+
+Found 4 diagnostics
