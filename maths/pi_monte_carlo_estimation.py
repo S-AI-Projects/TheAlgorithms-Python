@@ -1,3 +1,17 @@
+"""
+Monte Carlo Estimation of PI.
+
+Estimates the mathematical constant PI using random sampling within a unit square.
+A quarter-circle of radius 1 is inscribed within the unit square [0, 1) x [0, 1).
+By the Law of Large Numbers, the ratio of randomly generated points falling within
+the quarter-circle (where x^2 + y^2 <= 1) to the total number of points approximates
+the ratio of their areas, PI / 4, yielding an estimate PI ~ 4 * (inside / total).
+
+References:
+    - https://en.wikipedia.org/wiki/Monte_Carlo_method
+    - https://en.wikipedia.org/wiki/Approximations_of_%CF%80#Monte_Carlo_methods
+"""
+
 import random
 
 
@@ -54,7 +68,9 @@ def estimate_pi(number_of_simulations: int, seed: int | None = None) -> float:
     3.156
     >>> estimate_pi(1000000, 111)
     3.139892
-
+    >>> import math
+    >>> abs(estimate_pi(50000, 42) - math.pi) < 0.01
+    True
     """
     if number_of_simulations < 1:
         raise ValueError("At least one simulation is necessary to estimate PI.")

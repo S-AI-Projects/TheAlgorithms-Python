@@ -1,0 +1,85 @@
+=== 1. Doctest maths/pi_monte_carlo_estimation.py ===
+Trying:
+    estimate_pi(100, 1)
+Expecting:
+    3.2
+ok
+Trying:
+    estimate_pi(1000, 11)
+Expecting:
+    3.156
+ok
+Trying:
+    estimate_pi(1000000, 111)
+Expecting:
+    3.139892
+ok
+Trying:
+    import math
+Expecting nothing
+ok
+Trying:
+    abs(estimate_pi(50000, 42) - math.pi) < 0.01
+Expecting:
+    True
+ok
+5 items had no tests:
+    pi_monte_carlo_estimation
+    pi_monte_carlo_estimation.Point
+    pi_monte_carlo_estimation.Point.__init__
+    pi_monte_carlo_estimation.Point.is_in_unit_circle
+    pi_monte_carlo_estimation.Point.random_unit_square
+1 item passed all tests:
+   5 tests in pi_monte_carlo_estimation.estimate_pi
+5 tests in 6 items.
+5 passed.
+Test passed.
+
+=== 2. Pytest Doctest Modules ===
+============================= test session starts ==============================
+platform darwin -- Python 3.15.2, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/md.sohail/Documents/snai/TheAlgorithms-Python
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collected 1 item
+
+maths/pi_monte_carlo_estimation.py .                                     [100%]
+
+============================= slowest 10 durations =============================
+0.26s call     maths/pi_monte_carlo_estimation.py::maths.pi_monte_carlo_estimation.estimate_pi
+
+(2 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================== 1 passed in 0.28s ===============================
+
+=== 3. Ruff Check ===
+All checks passed!
+
+=== 4. Ruff Format Check ===
+2 files already formatted
+
+=== 5. Type Check (ty check) ===
+warning[renamed-rule]: Rule `call-non-callable` has been renamed to `not-callable`
+   --> pyproject.toml:319:7
+    |
+319 | rules.call-non-callable = "ignore"
+    |       ^^^^^^^^^^^^^^^^^
+
+warning[renamed-rule]: Rule `invalid-return-type` has been renamed to `invalid-explicit-return`
+   --> pyproject.toml:321:7
+    |
+321 | rules.invalid-return-type = "ignore"
+    |       ^^^^^^^^^^^^^^^^^^^
+
+warning[renamed-rule]: Rule `unresolved-attribute` has been renamed to `missing-attribute`
+   --> pyproject.toml:326:7
+    |
+326 | rules.unresolved-attribute = "ignore"
+    |       ^^^^^^^^^^^^^^^^^^^^
+
+warning[renamed-rule]: Rule `unresolved-import` has been renamed to `import-not-found`
+   --> pyproject.toml:327:7
+    |
+327 | rules.unresolved-import = "ignore"
+    |       ^^^^^^^^^^^^^^^^^
+
+Found 4 diagnostics
