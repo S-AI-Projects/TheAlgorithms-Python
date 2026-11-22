@@ -1,0 +1,211 @@
+=== 1. Validate Filenames ===
+=== 2. Ruff Check ===
+All checks passed!
+=== 3. Ruff Format Check ===
+1 file already formatted
+=== 4. Doctests ===
+Trying:
+    root = Node(1)
+Expecting nothing
+ok
+Trying:
+    root.left = Node(2)
+Expecting nothing
+ok
+Trying:
+    root.right = Node(3)
+Expecting nothing
+ok
+Trying:
+    get_preorder(root)
+Expecting:
+    [1, 2, 3]
+ok
+Trying:
+    get_preorder(None)
+Expecting:
+    []
+ok
+Trying:
+    tree1 = Node(5)
+Expecting nothing
+ok
+Trying:
+    tree1.left = Node(6)
+Expecting nothing
+ok
+Trying:
+    tree1.right = Node(7)
+Expecting nothing
+ok
+Trying:
+    tree1.left.left = Node(2)
+Expecting nothing
+ok
+Trying:
+    tree2 = Node(4)
+Expecting nothing
+ok
+Trying:
+    tree2.left = Node(5)
+Expecting nothing
+ok
+Trying:
+    tree2.right = Node(8)
+Expecting nothing
+ok
+Trying:
+    tree2.left.right = Node(1)
+Expecting nothing
+ok
+Trying:
+    tree2.right.right = Node(4)
+Expecting nothing
+ok
+Trying:
+    merged_tree = merge_two_binary_trees_iterative(tree1, tree2)
+Expecting nothing
+ok
+Trying:
+    print_preorder(merged_tree)
+Expecting:
+    9
+    11
+    2
+    1
+    15
+    4
+ok
+Trying:
+    from data_structures.binary_tree.merge_two_binary_trees import (
+        merge_two_binary_trees as recursive_merge,
+    )
+Expecting nothing
+ok
+Trying:
+    t1_rec = Node(5)
+Expecting nothing
+ok
+Trying:
+    t1_rec.left = Node(6)
+Expecting nothing
+ok
+Trying:
+    t1_rec.right = Node(7)
+Expecting nothing
+ok
+Trying:
+    t1_rec.left.left = Node(2)
+Expecting nothing
+ok
+Trying:
+    t2_rec = Node(4)
+Expecting nothing
+ok
+Trying:
+    t2_rec.left = Node(5)
+Expecting nothing
+ok
+Trying:
+    t2_rec.right = Node(8)
+Expecting nothing
+ok
+Trying:
+    t2_rec.left.right = Node(1)
+Expecting nothing
+ok
+Trying:
+    t2_rec.right.right = Node(4)
+Expecting nothing
+ok
+Trying:
+    rec_merged = recursive_merge(t1_rec, t2_rec)
+Expecting nothing
+ok
+Trying:
+    get_preorder(merged_tree) == get_preorder(rec_merged)
+Expecting:
+    True
+ok
+Trying:
+    merge_two_binary_trees_iterative(None, None) is None
+Expecting:
+    True
+ok
+Trying:
+    single = Node(42)
+Expecting nothing
+ok
+Trying:
+    merge_two_binary_trees_iterative(single, None) is single
+Expecting:
+    True
+ok
+Trying:
+    merge_two_binary_trees_iterative(None, single) is single
+Expecting:
+    True
+ok
+Trying:
+    merge_two_binary_trees_iterative("not a node", None)
+Expecting:
+    Traceback (most recent call last):
+        ...
+    TypeError: tree1 must be an instance of Node or None, got str
+ok
+Trying:
+    merge_two_binary_trees_iterative(None, [1, 2, 3])
+Expecting:
+    Traceback (most recent call last):
+        ...
+    TypeError: tree2 must be an instance of Node or None, got list
+ok
+Trying:
+    root = Node(1)
+Expecting nothing
+ok
+Trying:
+    root.left = Node(2)
+Expecting nothing
+ok
+Trying:
+    root.right = Node(3)
+Expecting nothing
+ok
+Trying:
+    print_preorder(root)
+Expecting:
+    1
+    2
+    3
+ok
+Trying:
+    print_preorder(None)
+Expecting nothing
+ok
+3 items had no tests:
+    merge_two_binary_trees_iterative
+    merge_two_binary_trees_iterative.Node
+    merge_two_binary_trees_iterative.Node.__init__
+3 items passed all tests:
+   5 tests in merge_two_binary_trees_iterative.get_preorder
+  29 tests in merge_two_binary_trees_iterative.merge_two_binary_trees_iterative
+   5 tests in merge_two_binary_trees_iterative.print_preorder
+39 tests in 6 items.
+39 passed.
+Test passed.
+=== 5. Pytest Doctest Modules ===
+============================= test session starts ==============================
+platform darwin -- Python 3.15.2, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/md.sohail/Documents/snai/TheAlgorithms-Python
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collected 3 items
+
+data_structures/binary_tree/merge_two_binary_trees_iterative.py ...      [100%]
+
+============================= slowest 10 durations =============================
+0.01s call     data_structures/binary_tree/merge_two_binary_trees_iterative.py::data_structures.binary_tree.merge_two_binary_trees_iterative.get_preorder
+
+(8 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================== 3 passed in 0.02s ===============================
