@@ -1,0 +1,83 @@
+=== 1. Repo-Config Ruff Check ===
+All checks passed!
+=== 2. Ruff Format Check ===
+1 file already formatted
+=== 3. Strict Ruff Check (--select ALL) ===
+warning: `incorrect-blank-line-before-class` (D203) and `blank-line-before-class` (D211) are incompatible. Ignoring `incorrect-blank-line-before-class`.
+warning: `multi-line-summary-first-line` (D212) and `multi-line-summary-second-line` (D213) are incompatible. Ignoring `multi-line-summary-second-line`.
+CPY001 Missing copyright notice at top of file
+--> conversions/pressure_conversions.py:1:1
+
+Found 1 error.
+=== 4. Doctests ===
+Trying:
+    pressure_conversion(4, "atm", "pascal")
+Expecting:
+    405300
+ok
+Trying:
+    pressure_conversion(1, "pascal", "psi")
+Expecting:
+    0.00014401981999999998
+ok
+Trying:
+    pressure_conversion(1, "bar", "atm")
+Expecting:
+    0.986923
+ok
+Trying:
+    pressure_conversion(3, "kilopascal", "bar")
+Expecting:
+    0.029999991892499998
+ok
+Trying:
+    pressure_conversion(2, "megapascal", "psi")
+Expecting:
+    290.074434314
+ok
+Trying:
+    pressure_conversion(4, "psi", "torr")
+Expecting:
+    206.85984
+ok
+Trying:
+    pressure_conversion(1, "inHg", "atm")
+Expecting:
+    0.0334211
+ok
+Trying:
+    pressure_conversion(1, "torr", "psi")
+Expecting:
+    0.019336718261000002
+ok
+Trying:
+    pressure_conversion(4, "wrongUnit", "atm")
+Expecting:
+    Traceback (most recent call last):
+        ...
+    ValueError: Invalid 'from_type' value: 'wrongUnit'  Supported values are:
+    atm, pascal, bar, kilopascal, megapascal, psi, inHg, torr
+ok
+2 items had no tests:
+    pressure_conversions
+    pressure_conversions.FromTo
+1 item passed all tests:
+   9 tests in pressure_conversions.pressure_conversion
+9 tests in 3 items.
+9 passed.
+Test passed.
+=== 5. Pytest Doctest-Modules ===
+============================= test session starts ==============================
+platform darwin -- Python 3.15.2, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/md.sohail/Documents/snai/TheAlgorithms-Python
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collected 1 item
+
+conversions/pressure_conversions.py .                                    [100%]
+
+============================= slowest 10 durations =============================
+0.01s call     conversions/pressure_conversions.py::conversions.pressure_conversions.pressure_conversion
+
+(2 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================== 1 passed in 0.02s ===============================

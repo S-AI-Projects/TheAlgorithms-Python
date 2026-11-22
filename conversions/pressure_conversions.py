@@ -1,5 +1,5 @@
-"""
-Conversion of pressure units.
+"""Conversion of pressure units.
+
 Available Units:- Pascal,Bar,Kilopascal,Megapascal,psi(pound per square inch),
 inHg(in mercury column),torr,atm
 USAGE :
@@ -23,6 +23,8 @@ from typing import NamedTuple
 
 
 class FromTo(NamedTuple):
+    """Conversion factors from and to standard atmosphere (atm)."""
+
     from_factor: float
     to_factor: float
 
@@ -40,8 +42,8 @@ PRESSURE_CONVERSION = {
 
 
 def pressure_conversion(value: float, from_type: str, to_type: str) -> float:
-    """
-    Conversion between pressure units.
+    """Conversion between pressure units.
+
     >>> pressure_conversion(4, "atm", "pascal")
     405300
     >>> pressure_conversion(1, "pascal", "psi")
@@ -67,12 +69,12 @@ def pressure_conversion(value: float, from_type: str, to_type: str) -> float:
     if from_type not in PRESSURE_CONVERSION:
         raise ValueError(
             f"Invalid 'from_type' value: {from_type!r}  Supported values are:\n"
-            + ", ".join(PRESSURE_CONVERSION)
+            + ", ".join(PRESSURE_CONVERSION),
         )
     if to_type not in PRESSURE_CONVERSION:
         raise ValueError(
             f"Invalid 'to_type' value: {to_type!r}.  Supported values are:\n"
-            + ", ".join(PRESSURE_CONVERSION)
+            + ", ".join(PRESSURE_CONVERSION),
         )
     return (
         value
