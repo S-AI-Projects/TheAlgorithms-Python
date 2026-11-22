@@ -31,7 +31,7 @@ class KNN:
         """
         Create a kNN classifier using the given training data and class labels
         """
-        self.data = zip(train_data, train_target)
+        self.data = list(zip(train_data, train_target))
         self.labels = class_labels
 
     @staticmethod
@@ -57,6 +57,16 @@ class KNN:
         >>> point = np.array([1.2, 1.2])
         >>> knn.classify(point)
         'A'
+        >>> sample_x = np.array(
+        ...     [[0.0, 0.0], [1.0, 0.0], [0.0, 1.0], [5.0, 5.0], [5.0, 6.0]]
+        ... )
+        >>> sample_y = np.array([0, 0, 0, 1, 1])
+        >>> sample_classes = ["ClassA", "ClassB"]
+        >>> sample_knn = KNN(sample_x, sample_y, sample_classes)
+        >>> sample_knn.classify(np.array([0.2, 0.2]), k=3)
+        'ClassA'
+        >>> sample_knn.classify(np.array([5.2, 5.1]), k=3)
+        'ClassB'
         """
         # Distances of all points from the point to be classified
         distances = (
