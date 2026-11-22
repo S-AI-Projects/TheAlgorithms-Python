@@ -1,0 +1,173 @@
+=== 1. Doctest physics/newtons_second_law_of_motion.py ===
+Trying:
+    newtons_second_law_of_motion(10, 10)
+Expecting:
+    100
+ok
+Trying:
+    newtons_second_law_of_motion(2.0, 1)
+Expecting:
+    2.0
+ok
+Trying:
+    newtons_second_law_of_motion(0, 10)
+Expecting:
+    0
+ok
+Trying:
+    newtons_second_law_of_motion(10, 0)
+Expecting:
+    0
+ok
+Trying:
+    newtons_second_law_of_motion(2.0, -9.8)
+Expecting:
+    -19.6
+ok
+Trying:
+    newtons_second_law_of_motion(-5, 10)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: Mass must be a non-negative value
+ok
+Trying:
+    newtons_second_law_of_motion("10", 10)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: Mass must be a numeric value (int or float), not str
+ok
+Trying:
+    newtons_second_law_of_motion(True, 10)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: Mass must be a numeric value (int or float), not bool
+ok
+Trying:
+    newtons_second_law_of_motion(10, "10")
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: Acceleration must be a numeric value (int or float), not str
+ok
+Trying:
+    newtons_second_law_of_motion(10, False)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: Acceleration must be a numeric value (int or float), not bool
+ok
+1 item had no tests:
+    newtons_second_law_of_motion
+1 item passed all tests:
+  10 tests in newtons_second_law_of_motion.newtons_second_law_of_motion
+10 tests in 2 items.
+10 passed.
+Test passed.
+
+=== 2. Pytest Coverage (100% target) ===
+============================= test session starts ==============================
+platform darwin -- Python 3.15.2, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/md.sohail/Documents/snai/TheAlgorithms-Python
+configfile: pyproject.toml
+plugins: cov-7.1.0, anyio-4.15.1
+collected 1 item
+
+physics/newtons_second_law_of_motion.py .                                [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.15.2-final-0 _______________
+
+Name                                               Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------------------
+physics/altitude_pressure.py                           9      9     0%   11-52
+physics/archimedes_principle_of_buoyant_force.py      12     12     0%   12-62
+physics/basic_orbital_capture.py                      21     21     0%   15-98
+physics/boyles_law.py                                 38     38     0%   42-184
+physics/bragg_angle.py                                11     11     0%   1-41
+physics/casimir_effect.py                             26     26     0%   38-120
+physics/center_of_mass.py                             16     16     0%   28-110
+physics/centripetal_force.py                           9      9     0%   24-49
+physics/coulombs_law.py                                7      7     0%   18-42
+physics/doppler_frequency.py                          10     10     0%   47-104
+physics/escape_velocity.py                            20     20     0%   1-67
+physics/faraday_lenz_law.py                           16     16     0%   36-93
+physics/first_law_of_thermodynamics.py                55     55     0%   23-176
+physics/fresnel_diffract.py                           29     29     0%   25-207
+physics/grahams_law.py                                14     14     0%   17-202
+physics/hamiltonian.py                                23     23     0%   26-98
+physics/hookes_law.py                                  7      7     0%   18-52
+physics/horizontal_projectile_motion.py               39     39     0%   20-166
+physics/hubble_parameter.py                           15     15     0%   30-100
+physics/ideal_gas_law.py                              20     20     0%   21-93
+physics/in_static_equilibrium.py                      23     23     0%   5-99
+physics/kinetic_energy.py                              7      7     0%   21-50
+physics/lens_formulae.py                              15     15     0%   51-131
+physics/light_aberration.py                            8      8     0%   10-50
+physics/lorentz_transformation_four_vector.py         32     32     0%   27-189
+physics/magnetic_flux.py                              21     21     0%   19-93
+physics/malus_law.py                                  11     11     0%   1-80
+physics/mass_energy_equivalence.py                    12     12     0%   21-77
+physics/maxwells_equations.py                         74     74     0%   18-395
+physics/mirror_formulae.py                            15     15     0%   61-127
+physics/n_body_simulation.py                          96     96     0%   14-347
+physics/newtons_law_of_gravitation.py                 28     28     0%   22-99
+physics/orbital_transfer_work.py                      28     28     0%   1-73
+physics/period_of_pendulum.py                          9      9     0%   25-53
+physics/photoelectric_effect.py                       11     11     0%   23-67
+physics/potential_energy.py                           11     11     0%   1-61
+physics/rainfall_intensity.py                          8      8     0%   17-143
+physics/relativistic_kinetic_energy.py                10     10     0%   32-66
+physics/relativistic_velocity_summation.py            10     10     0%   15-49
+physics/reynolds_number.py                             7      7     0%   33-63
+physics/rms_speed_of_molecule.py                      14     14     0%   23-50
+physics/shear_stress.py                               19     19     0%   1-59
+physics/snells_law.py                                 12     12     0%   10-75
+physics/speed_of_sound.py                              9      9     0%   23-48
+physics/speeds_of_gas_molecules.py                    16     16     0%   51-113
+physics/terminal_velocity.py                           8      8     0%   24-60
+physics/__init__.py                                    0      0   100%
+physics/image_data/__init__.py                         0      0   100%
+physics/newtons_second_law_of_motion.py               10      0   100%
+--------------------------------------------------------------------------------
+TOTAL                                                921    911     1%
+============================= slowest 10 durations =============================
+0.01s call     physics/newtons_second_law_of_motion.py::physics.newtons_second_law_of_motion.newtons_second_law_of_motion
+
+(2 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================== 1 passed in 0.09s ===============================
+
+=== 3. Ruff Check ===
+All checks passed!
+
+=== 4. Ruff Format Check ===
+1 file already formatted
+
+=== 5. Type Check (ty check) ===
+warning[renamed-rule]: Rule `call-non-callable` has been renamed to `not-callable`
+   --> pyproject.toml:319:7
+    |
+319 | rules.call-non-callable = "ignore"
+    |       ^^^^^^^^^^^^^^^^^
+
+warning[renamed-rule]: Rule `invalid-return-type` has been renamed to `invalid-explicit-return`
+   --> pyproject.toml:321:7
+    |
+321 | rules.invalid-return-type = "ignore"
+    |       ^^^^^^^^^^^^^^^^^^^
+
+warning[renamed-rule]: Rule `unresolved-attribute` has been renamed to `missing-attribute`
+   --> pyproject.toml:326:7
+    |
+326 | rules.unresolved-attribute = "ignore"
+    |       ^^^^^^^^^^^^^^^^^^^^
+
+warning[renamed-rule]: Rule `unresolved-import` has been renamed to `import-not-found`
+   --> pyproject.toml:327:7
+    |
+327 | rules.unresolved-import = "ignore"
+    |       ^^^^^^^^^^^^^^^^^
+
+Found 4 diagnostics
