@@ -23,6 +23,19 @@ def create_cipher_map(key: str) -> dict[str, str]:
 
     :param key: keyword to use
     :return: dictionary cipher map
+
+    >>> cmap = create_cipher_map('Goodbye!!')
+    >>> len(cmap)
+    26
+    >>> cmap['A']
+    'G'
+    >>> cmap['B']
+    'O'
+    >>> cmap['Z']
+    'Z'
+    >>> identity = create_cipher_map('')
+    >>> identity['A']
+    'A'
     """
     # Create a list of the letters in the alphabet
     alphabet = [chr(i + 65) for i in range(26)]
@@ -74,6 +87,35 @@ def decipher(message: str, cipher_map: dict[str, str]) -> str:
     return "".join(rev_cipher_map.get(ch, ch) for ch in message.upper())
 
 
+def process_cipher(message: str, key: str, option: str) -> str:
+    """
+    Enciphers or deciphers a message using a keyword cipher.
+
+    :param message: Message to encipher or decipher
+    :param key: Keyword for cipher map generation
+    :param option: 'e' for encipher, 'd' for decipher
+    :return: Enciphered or deciphered message
+    :raises KeyError: If option is invalid
+
+    >>> process_cipher('Hello World!!', 'Goodbye!!', 'e')
+    'CYJJM VMQJB!!'
+    >>> process_cipher('CYJJM VMQJB!!', 'Goodbye!!', 'd')
+    'HELLO WORLD!!'
+    >>> process_cipher('Hello World!!', 'Goodbye!!', 'E')
+    'CYJJM VMQJB!!'
+    >>> process_cipher('Hello', 'Key', 'x')
+    Traceback (most recent call last):
+        ...
+    KeyError: 'invalid input option'
+    """
+    clean_option = option.strip()[:1].lower()
+    operations = {"e": encipher, "d": decipher}
+    if clean_option not in operations:
+        raise KeyError("invalid input option")
+    cipher_map = create_cipher_map(key)
+    return operations[clean_option](message, cipher_map)
+
+
 def main() -> None:
     """
     Handles I/O
@@ -82,13 +124,8 @@ def main() -> None:
     """
     message = input("Enter message to encode or decode: ").strip()
     key = input("Enter keyword: ").strip()
-    option = input("Encipher or decipher? E/D:").strip()[0].lower()
-    try:
-        func = {"e": encipher, "d": decipher}[option]
-    except KeyError:
-        raise KeyError("invalid input option")
-    cipher_map = create_cipher_map(key)
-    print(func(message, cipher_map))
+    option = input("Encipher or decipher? E/D:").strip()
+    print(process_cipher(message, key, option))
 
 
 if __name__ == "__main__":

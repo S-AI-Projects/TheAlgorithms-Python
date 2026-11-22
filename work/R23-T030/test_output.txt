@@ -1,0 +1,144 @@
+=== 1. Validate Filenames ===
+=== 2. Ruff Check ===
+All checks passed!
+=== 3. Ruff Format Check ===
+1 file already formatted
+=== 4. C901 Complexity Check ===
+C901 `remove_duplicates` is too complex (3 > 1)
+ --> ciphers/simple_keyword_cypher.py:1:5
+  |
+1 | def remove_duplicates(key: str) -> str:
+  |     ^^^^^^^^^^^^^^^^^
+2 |     """
+3 |     Removes duplicate alphabetic characters in a keyword (letter is ignored after its
+  |
+
+C901 `create_cipher_map` is too complex (3 > 1)
+  --> ciphers/simple_keyword_cypher.py:20:5
+   |
+20 | def create_cipher_map(key: str) -> dict[str, str]:
+   |     ^^^^^^^^^^^^^^^^^
+21 |     """
+22 |     Returns a cipher map given a keyword.
+   |
+
+C901 `process_cipher` is too complex (2 > 1)
+  --> ciphers/simple_keyword_cypher.py:90:5
+   |
+90 | def process_cipher(message: str, key: str, option: str) -> str:
+   |     ^^^^^^^^^^^^^^
+91 |     """
+92 |     Enciphers or deciphers a message using a keyword cipher.
+   |
+
+Found 3 errors.
+=== 5. Doctests ===
+Trying:
+    cmap = create_cipher_map('Goodbye!!')
+Expecting nothing
+ok
+Trying:
+    len(cmap)
+Expecting:
+    26
+ok
+Trying:
+    cmap['A']
+Expecting:
+    'G'
+ok
+Trying:
+    cmap['B']
+Expecting:
+    'O'
+ok
+Trying:
+    cmap['Z']
+Expecting:
+    'Z'
+ok
+Trying:
+    identity = create_cipher_map('')
+Expecting nothing
+ok
+Trying:
+    identity['A']
+Expecting:
+    'A'
+ok
+Trying:
+    cipher_map = create_cipher_map('Goodbye!!')
+Expecting nothing
+ok
+Trying:
+    decipher(encipher('Hello World!!', cipher_map), cipher_map)
+Expecting:
+    'HELLO WORLD!!'
+ok
+Trying:
+    encipher('Hello World!!', create_cipher_map('Goodbye!!'))
+Expecting:
+    'CYJJM VMQJB!!'
+ok
+Trying:
+    process_cipher('Hello World!!', 'Goodbye!!', 'e')
+Expecting:
+    'CYJJM VMQJB!!'
+ok
+Trying:
+    process_cipher('CYJJM VMQJB!!', 'Goodbye!!', 'd')
+Expecting:
+    'HELLO WORLD!!'
+ok
+Trying:
+    process_cipher('Hello World!!', 'Goodbye!!', 'E')
+Expecting:
+    'CYJJM VMQJB!!'
+ok
+Trying:
+    process_cipher('Hello', 'Key', 'x')
+Expecting:
+    Traceback (most recent call last):
+        ...
+    KeyError: 'invalid input option'
+ok
+Trying:
+    remove_duplicates('Hello World!!')
+Expecting:
+    'Helo Wrd'
+ok
+2 items had no tests:
+    simple_keyword_cypher
+    simple_keyword_cypher.main
+5 items passed all tests:
+   7 tests in simple_keyword_cypher.create_cipher_map
+   2 tests in simple_keyword_cypher.decipher
+   1 test in simple_keyword_cypher.encipher
+   4 tests in simple_keyword_cypher.process_cipher
+   1 test in simple_keyword_cypher.remove_duplicates
+15 tests in 7 items.
+15 passed.
+Test passed.
+=== 6. Pytest Coverage ===
+============================= test session starts ==============================
+platform darwin -- Python 3.15.2, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/md.sohail/Documents/snai/TheAlgorithms-Python
+configfile: pyproject.toml
+plugins: cov-7.1.0, anyio-4.15.1
+collected 5 items
+
+ciphers/simple_keyword_cypher.py .....                                   [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.15.2-final-0 _______________
+
+Name                               Stmts   Miss  Cover   Missing
+----------------------------------------------------------------
+ciphers/simple_keyword_cypher.py      39      7    82%   125-128, 132-135
+----------------------------------------------------------------
+TOTAL                                 39      7    82%
+============================= slowest 10 durations =============================
+0.01s call     ciphers/simple_keyword_cypher.py::ciphers.simple_keyword_cypher.create_cipher_map
+
+(9 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================== 5 passed in 0.04s ===============================
